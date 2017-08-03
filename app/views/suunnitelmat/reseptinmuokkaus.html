@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Muokkaa reseptiä Resepti 1</h1>
+
+  <form>
+    
+    <div class="form-group">
+      <label>Lääkkeen nimi</label>
+      <input type="text" class="form-control" value="Kipuxiini">
+    </div>
+
+    <div class="form-group">
+      <label>Kirjoituspäivä</label>
+      <input type="text" class="form-control" value="03.08.2017">
+    </div>
+
+    <div class="form-group">
+      <label>Potilas</label>
+      <input type="text" class="form-control" value="Tukka Sotka">
+    </div>
+
+    <div class="form-group">
+      <label>Lääkäri</label>
+      <input type="text" class="form-control" value="Karri Kardiologi">
+    </div>
+
+    <div class="form-group">
+      <label>Ohje</label>
+      <textarea class="form-control"> 1 tabletti iltaisin.
+      </textarea>
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Tallenna</button>
+    </div>
+
+  </form>
+
+{% endblock %}

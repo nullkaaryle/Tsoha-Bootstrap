@@ -1,1 +1,6 @@
 -- Lisää DROP TABLE lauseet tähän tiedostoon
+-- Muista IF EXISTS ja CASCADE parametrit!
+DROP TABLE IF EXISTS Apteekki CASCADE; 
+DROP TABLE IF EXISTS Resepti CASCADE;
+DROP TABLE IF EXISTS Laake CASCADE;
+DROP TABLE IF EXISTS Laakeaine CASCADE;

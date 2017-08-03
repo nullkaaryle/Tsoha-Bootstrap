@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+  
+  <h1>Reseptilistaus</h1>
+
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Resepti</th>
+        <th>Potilas</th>
+        <th>Lääkkeen nimi</th>
+        <th>Kirjoituspäivä</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <!-- Listataan reseptit tähän -->
+      <tr>
+        <td><a href="#">Resepti 1</td>
+        <td>Tukka Sotka</td>
+        <td><a href="#">Kipuxiini</a></td>
+        <td>03.08.2017</td>
+        <th><a class="btn btn-default btn-sm" href="#">Muokkaa</a></th>
+         <th><a class="btn btn-default btn-sm" href="#">Poista</a></th>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    <a href="#" class="btn btn-success">Lisää uusi resepti</a>
+  </p>
+
+{% endblock %}
