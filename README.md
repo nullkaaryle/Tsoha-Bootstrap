@@ -3,15 +3,21 @@
 
 ## Työn aihe
 
-Harjoitustyön aiheena on lääkereseptiarkisto. Reseptiarkiston avulla voidaan pitää kirjaa resepteistä. Rekisteröitynyt apteekki voi kirjoittaa potilaalleen reseptin ja tarkastella lääkkeitä.
+Harjoitustyön aiheena on lääkereseptiarkisto. Rekisteröitynyt apteekki voi kirjoittaa potilaalleen lääkärin määräämän reseptin. Lisäksi apteekki voi tarkastella esimerkiksi lääkeaineita ja lääkkeitä.
 
 ## Yleisiä linkkejä:
 
 * [Linkki sovellukseeni](https://ptalosel.users.cs.helsinki.fi/tsoha2017)
 * [Linkki dokumentaatiooni](https://github.com/nullkaaryle/Tsoha-Reseptiarkisto/blob/master/doc/dokumentaatio.pdf)
-Linkkejä
 
-### Linkkejä sovellukseen (viikko 2)
+### Linkkejä sovellukseen 
+
+#### (viikko 3)
+* [Ainesosien listaus](http://ptalosel.users.cs.helsinki.fi/tsoha2017/ainesosat)
+* [Ainesosan lisäys](http://ptalosel.users.cs.helsinki.fi/tsoha2017/ainesosat/uusi)
+* [Ainesosan katselu](http://ptalosel.users.cs.helsinki.fi/tsoha2017/ainesosat/7)
+
+#### (viikko 2)
 * [Etusivu](http://ptalosel.users.cs.helsinki.fi/tsoha2017/etusivu)
 * [Kirjautuminen](http://ptalosel.users.cs.helsinki.fi/tsoha2017/kirjautuminen)
 * [Reseptien listaus](http://ptalosel.users.cs.helsinki.fi/tsoha2017/reseptit)
