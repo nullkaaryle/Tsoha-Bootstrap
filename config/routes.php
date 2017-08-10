@@ -8,13 +8,41 @@
         HelloWorldController::sandbox();
     });
 
+// RESEPTI 
+
     $routes->get('/reseptit', function() {
         ReseptitController::nayta_reseptilistaus();
     });
 
-     $routes->get('/reseptit/1', function() {
-        HelloWorldController::nayta_resepti();
+    $routes->get('/reseptit/:id', function($id) {
+        ReseptitController::nayta_resepti($id);
     });
+
+// AINESOSAT
+
+    $routes->get('/ainesosat', function() {
+        AinesosatController::nayta_ainesosalistaus();
+    });
+
+    //create
+    $routes->get('/ainesosat/uusi', function() {
+        AinesosatController::nayta_ainesosanlisays();
+    });
+
+    $routes->get('/ainesosat/:id', function($id) {
+        AinesosatController::nayta_ainesosa($id);
+    });
+
+    //store
+    $routes->post('/ainesosat/', function() {
+        AinesosatController::tallenna_ainesosa();
+    });
+
+    
+
+    
+
+// MUUT
 
     $routes->get('/etusivu', function() {
         HelloWorldController::nayta_etusivu();

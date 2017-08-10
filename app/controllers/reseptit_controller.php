@@ -9,7 +9,7 @@ class ReseptitController extends BaseController{
 
     public static function nayta_resepti($id){
         $resepti = Resepti::find($id);
-        View::make('suunnitelmat/resepti/:id.html', array('resepti' => $resepti));
+        View::make('suunnitelmat/resepti.html', array('resepti' => $resepti));
     }
 
 }
