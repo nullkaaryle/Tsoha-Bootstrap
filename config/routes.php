@@ -8,6 +8,14 @@
         HelloWorldController::sandbox();
     });
 
+    $routes->get('/reseptit', function() {
+        ReseptitController::nayta_reseptilistaus();
+    });
+
+     $routes->get('/reseptit/1', function() {
+        HelloWorldController::nayta_resepti();
+    });
+
     $routes->get('/etusivu', function() {
         HelloWorldController::nayta_etusivu();
     });
@@ -18,10 +26,6 @@
 
     $routes->get('/reseptit/1', function() {
         HelloWorldController::nayta_resepti();
-    });
-
-    $routes->get('/reseptit', function() {
-        HelloWorldController::nayta_reseptilistaus();
     });
 
     $routes->get('/reseptit/1/muokkaus', function() {

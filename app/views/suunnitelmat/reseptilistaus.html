@@ -7,24 +7,32 @@
     <thead>
       <tr>
         <th>Resepti</th>
+        <th>Apteekki</th>
         <th>Potilas</th>
+        <th>Lääkäri</th>
         <th>Lääkkeen nimi</th>
+        <th>Annostusohje</th>
         <th>Kirjoituspäivä</th>
-        <th></th>
       </tr>
     </thead>
 
     <tbody>
 
       <!-- Listataan reseptit tähän -->
+      {% for resepti in reseptit %}
       <tr>
-        <td><a href="#">Resepti 1</td>
-        <td>Tukka Sotka</td>
-        <td><a href="#">Kipuxiini</a></td>
-        <td>03.08.2017</td>
-        <th><a class="btn btn-default btn-sm" href="#">Muokkaa</a></th>
-         <th><a class="btn btn-default btn-sm" href="#">Poista</a></th>
+        <td><a href="{{base_path}}/reseptit/{{resepti.id}}">{{resepti.id}}</td>
+        <td>{{resepti.apteekki}}</td>
+        <td>{{resepti.potilas}}</td>
+        <td>{{resepti.laakari}}</td>
+        <td>{{resepti.laake}}</td>
+        <td>{{resepti.ohje}}</td>
+        <td>{{resepti.paivamaara}}</td>
+        <td><button type="button" class="btn btn-warning" href="#">Muokkaa</button></td>
+        <td><button type="button" class="btn btn-danger" href="#">Poista</button></td>
       </tr>
+      {% endfor %}
+
     </tbody>
   </table>
 

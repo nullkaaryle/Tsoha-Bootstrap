@@ -1,5 +1,7 @@
 <?php
 
+//require 'app/models/resepti.php';
+
   class HelloWorldController extends BaseController{
 
     public static function index(){
@@ -10,7 +12,11 @@
     public static function sandbox(){
       // Testaa koodiasi täällä
       // echo 'Hello World!';
-      View::make('helloworld.html');
+      //View::make('helloworld.html');
+      $ekaresepti = Resepti::find(1);
+      $reseptit = Resepti::all();
+      Kint::dump($reseptit);
+      Kint::dump($ekaresepti);
     }
 
     public static function nayta_etusivu(){
