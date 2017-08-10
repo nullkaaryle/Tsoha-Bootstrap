@@ -9,7 +9,7 @@ class AinesosatController extends BaseController{
 
     public static function nayta_ainesosa($id){
         $ainesosa = Ainesosa::find($id);
-        View::make('suunnitelmat/ainesosa/ainesosa.html', array('ainesosa' => $ainesosa));
+        View::make('suunnitelmat/ainesosa/ainesosa.html', array('ainesosa' => $ainesosa, 'kikkare' => 'kakka'));
     }
 
     public static function nayta_ainesosanlisays(){
