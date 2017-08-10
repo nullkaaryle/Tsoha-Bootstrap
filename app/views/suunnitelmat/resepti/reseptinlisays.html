@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Lisää uusi resepti</h1>
+
+  <form method="post" action="{{base_path}}/reseptit">
+    <div class="form-group">
+      <label>To be done...</label>
+      <input type="text" name="reseptijotain" class="form-control">
+    </div>
+
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Lisää</button>
+    </div>
+  </form>
+{% endblock %}

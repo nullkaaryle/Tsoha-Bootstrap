@@ -4,7 +4,8 @@
 
     public static function index(){
       // make-metodi renderöi app/views-kansiossa sijaitsevia tiedostoja
-   	  echo 'Tämä on etusivu!';
+   	  //echo 'Tämä on etusivu!';
+      Redirect::to('/etusivu');
     }
 
     public static function sandbox(){

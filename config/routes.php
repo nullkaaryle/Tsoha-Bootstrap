@@ -14,9 +14,16 @@
         ReseptitController::nayta_reseptilistaus();
     });
 
+    //create
+    $routes->get('/reseptit/uusi', function() {
+        ReseptitController::nayta_reseptinlisays();
+    });
+
     $routes->get('/reseptit/:id', function($id) {
         ReseptitController::nayta_resepti($id);
     });
+
+
 
 // AINESOSAT
 
