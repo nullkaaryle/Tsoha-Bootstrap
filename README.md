@@ -7,7 +7,7 @@ Harjoitustyön aiheena on lääkereseptiarkisto. Rekisteröitynyt apteekki voi k
 
 ## Yleisiä linkkejä:
 
-* [Linkki sovellukseeni](https://ptalosel.users.cs.helsinki.fi/tsoha2017)
+* [Linkki sovellukseeni](http://ptalosel.users.cs.helsinki.fi/tsoha2017/etusivu)
 * [Linkki dokumentaatiooni](https://github.com/nullkaaryle/Tsoha-Reseptiarkisto/blob/master/doc/dokumentaatio.pdf)
 
 ### Linkkejä sovellukseen 
