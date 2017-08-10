@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- Otsikko tähän -->
+  <h2>Resepti {{resepti.id}}</h2>
+
+
+<!-- Tiedot tulee listana tähän -->
+  <ul>
+    <li><strong>Reseptin numero: </strong> {{resepti.id}}</li>
+    <li><strong>Apteekki: </strong> {{resepti.apteekki}}</li>
+    <li><strong>Potilas: </strong> {{resepti.potilas}}</li>
+    <li><strong>Lääkäri: </strong> {{resepti.laakari}}</li>
+    <li><strong>Lääkkeen nimi: </strong> {{resepti.laake}}</li>
+    <li><strong>Annostusohje: </strong> {{resepti.ohje}}</li>
+    <li><strong>Kirjoituspäivä: </strong> {{resepti.paivamaara}}</li>
+  </ul>
+     
+   
+ <!-- Painikkeet tähän --> 
+        <td><button type="button" class="btn btn-warning" href="#">Muokkaa</button></td>
+        <td><button type="button" class="btn btn-danger" href="#">Poista</button></td>
+      </tr>
+
+{% endblock %}

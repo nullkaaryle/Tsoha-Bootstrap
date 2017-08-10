@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+  
+  <h1>Reseptilistaus</h1>
+
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Resepti</th>
+        <th>Apteekki</th>
+        <th>Potilas</th>
+        <th>Lääkäri</th>
+        <th>Lääkkeen nimi</th>
+        <th>Annostusohje</th>
+        <th>Kirjoituspäivä</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <!-- Listataan reseptit tähän -->
+      {% for resepti in reseptit %}
+      <tr>
+        <td><a href="{{base_path}}/reseptit/{{resepti.id}}">{{resepti.id}}</td>
+        <td>{{resepti.apteekki}}</td>
+        <td>{{resepti.potilas}}</td>
+        <td>{{resepti.laakari}}</td>
+        <td>{{resepti.laake}}</td>
+        <td>{{resepti.ohje}}</td>
+        <td>{{resepti.paivamaara}}</td>
+        <td><button type="button" class="btn btn-warning" href="#">Muokkaa</button></td>
+        <td><button type="button" class="btn btn-danger" href="#">Poista</button></td>
+      </tr>
+      {% endfor %}
+
+    </tbody>
+  </table>
+
+  <p>
+    <a href="/tsoha2017/reseptit/uusi" class="btn btn-success">Lisää uusi resepti</a>
+  </p>
+
+{% endblock %}
