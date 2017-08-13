@@ -45,9 +45,16 @@
         AinesosatController::tallenna_ainesosa();
     });
 
-    
 
-    
+// LÄÄKKEET  
+
+    $routes->get('/laakkeet', function() {
+        LaakkeetController::nayta_laakelistaus();
+    });
+
+    $routes->get('/laakkeet/:id', function($id) {
+        LaakkeetController::nayta_laake($id);
+    });
 
 // MUUT
 
@@ -59,21 +66,11 @@
         HelloWorldController::nayta_kirjautuminen();
     });
 
-    $routes->get('/reseptit/1', function() {
-        HelloWorldController::nayta_resepti();
-    });
-
     $routes->get('/reseptit/1/muokkaus', function() {
         HelloWorldController::nayta_reseptinmuokkaus();
     });
 
-    $routes->get('/laakkeet', function() {
-        HelloWorldController::nayta_laakelistaus();
-    });
-
-    $routes->get('/laakkeet/1', function() {
-        HelloWorldController::nayta_laake();
-    });
+    
 
     $routes->get('/laakkeet/1/muokkaus', function() {
         HelloWorldController::nayta_laakkeenmuokkaus();

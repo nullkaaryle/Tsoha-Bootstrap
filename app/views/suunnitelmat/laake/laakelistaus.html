@@ -6,19 +6,26 @@
   <table class="table table-striped table-bordered">
     <thead>
       <tr>
-        <th>Lääke</th>
-        <th></th>
+        <th>Rekisteröintinumero</th>
+        <th>Tuotenimi</th>
+        <th>Pakkauskoko ja lääkemuoto</th>
       </tr>
     </thead>
 
     <tbody>
 
       <!-- Listataan lääkkeet tähän -->
+
+      {% for laake in laakkeet %}
       <tr>
-        <td><a href="#">Kipuxiini</td>
-        <th><a class="btn btn-default btn-sm" href="#">Muokkaa</a></th>
-         <th><a class="btn btn-default btn-sm" href="#">Poista</a></th>
+        <td><a href="{{base_path}}/laakkeet/{{laake.id}}">{{laake.id}}</td>
+        <td><a href="{{base_path}}/laakkeet/{{laake.id}}">{{laake.tuotenimi}}</td>
+        <td>{{laake.pakkaus}}</td>
+        <td><button type="button" class="btn btn-warning" href="#">Muokkaa</button></td>
+        <td><button type="button" class="btn btn-danger" href="#">Poista</button></td>
       </tr>
+      {% endfor %}
+    
     </tbody>
   </table>
 
