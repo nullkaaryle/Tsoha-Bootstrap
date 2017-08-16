@@ -79,4 +79,33 @@ class Resepti extends BaseModel{
 
         return null;
     }
+
+    public function save(){
+        $query = DB::connection()->prepare('INSERT INTO Resepti (
+                                                            apteekki, 
+                                                            potilas, 
+                                                            laakari, 
+                                                            laake, 
+                                                            ohje, 
+                                                            paivamaara) 
+                                                    VALUES (
+                                                            :apteekki, 
+                                                            :potilas, 
+                                                            :laakari, 
+                                                            :laake, 
+                                                            :ohje, 
+                                                            :paivamaara) 
+                                                    RETURNING id');
+        $query->execute(array(
+                            'apteekki'  => $this->apteekki, 
+                            'potilas'   => $this->potilas,
+                            'laakari'   => $this->laakari,
+                            'laake'     => $this->laake,
+                            'ohje'      => $this->ohje,
+                            'paivamaara' => $this->paivamaara
+                            ));
+        $row = $query->fetch();
+
+        $this->id = $row['id'];
+    }
 }

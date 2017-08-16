@@ -21,9 +21,33 @@
 
       foreach($this->validators as $validator){
         // Kutsu validointimetodia tässä ja lisää sen palauttamat virheet errors-taulukkoon
+        $virheet = $this->{$validator}();
+        $errors = array_merge($errors, $virheet);
       }
 
       return $errors;
     }
 
+    public function validate_string_length($string, $length){
+      $errors = array();
+
+      if(strlen($string) < $length) {
+            $errors[] = 'Tallennettavan syötteen oltava vähintään ' . $length . ' merkkiä pitkä';
+      }
+
+      return $errors;
+    }
+
+    public function validate_string_numerics($string){
+      $errors = array();
+
+      if(is_numeric($string)) {
+            $errors[] = 'Tallennettava syöte ei voi olla pelkkiä numeroita!';       
+      }
+
+      return $errors;
+    }
+
+
   }
+

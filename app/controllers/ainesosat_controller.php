@@ -4,16 +4,16 @@ class AinesosatController extends BaseController{
 
     public static function nayta_ainesosalistaus(){
         $ainesosat = Ainesosa::all();
-        View::make('suunnitelmat/ainesosa/ainesosalistaus.html', array('ainesosat' => $ainesosat));
+        View::make('ainesosa/ainesosalistaus.html', array('ainesosat' => $ainesosat));
     }
 
     public static function nayta_ainesosa($id){
         $ainesosa = Ainesosa::find($id);
-        View::make('suunnitelmat/ainesosa/ainesosa.html', array('ainesosa' => $ainesosa, 'kikkare' => 'kakka'));
+        View::make('ainesosa/ainesosa.html', array('ainesosa' => $ainesosa, 'kikkare' => 'kakka'));
     }
 
     public static function nayta_ainesosanlisays(){
-        View::make('suunnitelmat/ainesosa/ainesosanlisays.html');
+        View::make('ainesosa/ainesosanlisays.html');
     }
 
     public static function tallenna_ainesosa(){
@@ -22,9 +22,15 @@ class AinesosatController extends BaseController{
             'aine' => $params['aine']
         )); 
 
-        $ainesosa -> save();
+        $errors = $ainesosa->errors();
 
-        Redirect::to('/ainesosat/' . $ainesosa->id, array('message' => 'Ainesosa tallennettu!'));
+        if(count($errors) == 0) {
+            $ainesosa -> save();
+
+            Redirect::to('/ainesosat/' . $ainesosa->id, array('message' => 'Ainesosa tallennettu!'));
+        }else{
+            View::make('ainesosa/ainesosanlisays.html', array('errors' => $errors));
+        }
     }
 
 }

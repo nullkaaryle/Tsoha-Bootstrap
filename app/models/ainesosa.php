@@ -6,6 +6,7 @@ class Ainesosa extends BaseModel{
 
     public function __construct($attributes){
         parent::__construct($attributes);
+        $this->validators = array('validate_pituus','validate_numerot');
     }
 
     public static function all(){
@@ -48,4 +49,14 @@ class Ainesosa extends BaseModel{
 
         $this->id = $row['id'];
     }
+
+    public function validate_pituus() {
+        return parent::validate_string_length($this->aine, 5);  
+    }
+
+     public function validate_numerot() {
+        return parent::validate_string_numerics($this->aine);  
+    }
+
+
 }

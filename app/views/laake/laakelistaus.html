@@ -2,13 +2,14 @@
 {% block content %}
   
   <h1>Lääkelistaus</h1>
-
+ 
   <table class="table table-striped table-bordered">
     <thead>
       <tr>
         <th>Rekisteröintinumero</th>
         <th>Tuotenimi</th>
         <th>Pakkauskoko ja lääkemuoto</th>
+        <th colspan="2"> Toiminnot</th>
       </tr>
     </thead>
 
@@ -30,7 +31,7 @@
   </table>
 
   <p>
-    <a href="#" class="btn btn-success">Lisää uusi lääke</a>
+    <a href="{{base_path}}/laakkeet/uusi" class="btn btn-success">Lisää uusi lääke</a>
   </p>
 
 {% endblock %}

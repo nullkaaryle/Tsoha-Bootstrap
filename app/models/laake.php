@@ -45,5 +45,7 @@ class Laake extends BaseModel{
 
         return null;
     }
+
+    
     
 }
