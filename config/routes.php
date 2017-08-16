@@ -45,6 +45,20 @@
         AinesosatController::tallenna_ainesosa();
     });
 
+    $routes->get('/ainesosat/:id/muokkaa', function($id)){
+        AinesosatController::nayta_ainesosanmuokkaus($id);
+    }
+
+    $routes->post('/ainesosat/:id/muokkaa', function($id)){
+        AinesosatController::muokkaa_ainesosaa($id);
+    }
+
+    $routes->post('/ainesosat/:id/poista', function($id)){
+        AinesosatController::poista_ainesosa($id);
+    }
+
+
+
 
 // LÄÄKKEET  
 

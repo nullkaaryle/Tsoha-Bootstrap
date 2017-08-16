@@ -13,14 +13,16 @@
    {% endif %}   
 
   <form method="post" action="{{base_path}}/ainesosat">
+   
     <div class="form-group">
       <label>Ainesosa</label>
-      <input type="text" name="aine" class="form-control">
+      <input type="text" name="aine" class="form-control" value="{{ainesosa.aine}}">
     </div>
 
 
     <div class="form-group">
       <button type="submit" class="btn btn-primary">Lisää</button>
     </div>
+
   </form>
 {% endblock %}

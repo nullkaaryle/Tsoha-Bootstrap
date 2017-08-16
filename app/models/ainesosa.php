@@ -27,7 +27,8 @@ class Ainesosa extends BaseModel{
 
     public static function find($id){
         $query = DB::connection()->prepare('SELECT * FROM Ainesosa WHERE id = :id LIMIT 1');
-        $query->execute(array('id' => $id));
+        $query->execute(array(
+            'id' => $id));
         $row = $query->fetch();
 
         if($row){
@@ -44,11 +45,28 @@ class Ainesosa extends BaseModel{
 
     public function save(){
         $query = DB::connection()->prepare('INSERT INTO Ainesosa (aine) VALUES (:aine) RETURNING id');
-        $query->execute(array('aine' => $this->aine));
+        $query->execute(array(
+            'aine' => $this->aine));
         $row = $query->fetch();
 
         $this->id = $row['id'];
     }
+
+    public function update(){
+        $query = DB::connection()->prepare('UPDATE Ainesosa SET aine = :aine WHERE id = :id RETURNING id');
+        $query->execute(array(
+            'aine' => $this->aine,
+            'id' => $this->id));
+        $row = $query->fetch();
+        $this->id = $row['id'];
+    }
+
+    public function destroy($id){
+        $query = DB::connection()->prepare('DELETE FROM Ainesosa  WHERE id = :id'));
+        $query->execute(array('id' => $id));
+    }
+
+
 
     public function validate_pituus() {
         return parent::validate_string_length($this->aine, 5);  
