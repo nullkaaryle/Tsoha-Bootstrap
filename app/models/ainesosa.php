@@ -26,17 +26,18 @@ class Ainesosa extends BaseModel{
     }
 
     public static function find($id){
-        $query = DB::connection()->prepare('SELECT * FROM Ainesosa WHERE id = :id LIMIT 1');
+        $query = DB::connection()->prepare('SELECT * FROM Ainesosa 
+                                            WHERE id = :id 
+                                            LIMIT 1');
         $query->execute(array(
-            'id' => $id));
+                            'id' => $id));
+        
         $row = $query->fetch();
 
         if($row){
             $ainesosa = new Ainesosa(array(
-                'id' => $row['id'],
-                'aine' => $row['aine']
-            ));
-
+                                        'id' => $row['id'],
+                                        'aine' => $row['aine']));
             return $ainesosa;
         }
 
@@ -44,26 +45,34 @@ class Ainesosa extends BaseModel{
     }
 
     public function save(){
-        $query = DB::connection()->prepare('INSERT INTO Ainesosa (aine) VALUES (:aine) RETURNING id');
+        $query = DB::connection()->prepare('INSERT INTO Ainesosa (aine) 
+                                            VALUES (:aine) 
+                                            RETURNING id');
         $query->execute(array(
-            'aine' => $this->aine));
-        $row = $query->fetch();
-
-        $this->id = $row['id'];
-    }
-
-    public function update(){
-        $query = DB::connection()->prepare('UPDATE Ainesosa SET aine = :aine WHERE id = :id RETURNING id');
-        $query->execute(array(
-            'aine' => $this->aine,
-            'id' => $this->id));
+                            'aine' => $this->aine));
+        
         $row = $query->fetch();
         $this->id = $row['id'];
     }
 
-    public function destroy($id){
-        $query = DB::connection()->prepare('DELETE FROM Ainesosa  WHERE id = :id'));
-        $query->execute(array('id' => $id));
+    public function update($aine){
+        $query = DB::connection()->prepare('UPDATE Ainesosa 
+                                            SET aine = :aine 
+                                            WHERE id = :id 
+                                            RETURNING id');
+        $query->execute(array(
+                            'aine' => $aine,
+                            'id' => $this->id));
+       
+        $row = $query->fetch();
+        $this->id = $row['id'];
+    }
+
+    public function destroy(){
+        $query = DB::connection()->prepare('DELETE FROM Ainesosa 
+                                            WHERE id = :id');
+        $query->execute(array(
+                            'id' => $this->id));
     }
 
 

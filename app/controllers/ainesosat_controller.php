@@ -33,21 +33,24 @@ class AinesosatController extends BaseController{
     }
 
     public static function nayta_ainesosanmuokkaus($id){
-        $ainesosa = Ainesosa:find($id);
+        $ainesosa = Ainesosa::find($id);
         View::make('ainesosa/ainesosanmuokkaus.html', array('ainesosa' => $ainesosa));
     }
 
     public static function muokkaa_ainesosaa($id){
         $params = $_POST;
-        $ainesosa = new Ainesosa(array(
-            'aine' => $params['aine']
-        ));
+        $aine = $params['aine'];
+        $ainesosa = Ainesosa::find($id);
+        //$ainesosa = new Ainesosa(array(
+        //    'aine' => $params['aine']
+        //));
+        
         $errors = $ainesosa->errors();
 
         if(count($errors) > 0) {
             View::make('ainesosa/ainesosanmuokkaus.html', array('errors' => $errors, 'ainesosa' => $ainesosa));
         }else{
-            $ainesosa->update();
+            $ainesosa->update($aine);
             Redirect::to('/ainesosat/' . $ainesosa->id, array('message' => 'Ainesosaa on muokattu onnistuneesti!'));
         } 
     }

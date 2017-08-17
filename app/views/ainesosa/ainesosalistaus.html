@@ -8,7 +8,7 @@
       <tr>
         <th>Tunnistenumero</th>
         <th>Ainesosa</th>
-        <th colspan="2">Toiminnot</th>
+        <th>Toiminto</th>
       </tr>
     </thead>
 
@@ -17,11 +17,10 @@
       {% for ainesosa in ainesosat %}
 
       <tr>
-        <td><a href="{{base_path}}/ainesosat/{{ainesosa.id}}">{{ainesosa.id}}</td>
-        <td>{{ainesosa.aine}}</td>
-        <td><button type="button" class="btn btn-warning" href="#">Muokkaa</button></td>
-        <td><button type="button" class="btn btn-danger" href="#">Poista</button></td>
-      </tr>
+        <td>{{ainesosa.id}}</td>
+        <td><a href="{{base_path}}/ainesosat/{{ainesosa.id}}">{{ainesosa.aine}}</a></td>
+        <td> <a href="{{base_path}}/ainesosat/{{ainesosa.id}}/muokkaa" class="btn btn-warning">Muokkaa</button></a></td>
+        
 
       {% endfor %}
 
@@ -30,7 +29,7 @@
   </table>
 
   <p>
-    <a href="/tsoha2017/ainesosat/uusi" class="btn btn-success">Lisää uusi ainesosa</a>
+    <a href="{{base_path}}/ainesosat/uusi" class="btn btn-success">Lisää uusi ainesosa</a>
   </p>
 
 {% endblock %}

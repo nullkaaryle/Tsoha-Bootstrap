@@ -5,8 +5,20 @@
   <h2>{{ainesosa.aine}}</h2>
  
 <!-- Painikkeet tähän --> 
-        <td><button type="button" class="btn btn-warning" href="#">Muokkaa</button></td>
-        <td><button type="button" class="btn btn-danger" href="#">Poista</button></td>
-      </tr>
+    <td> 
+        <a href="{{base_path}}/ainesosat/{{ainesosa.id}}/muokkaa" class="btn btn-warning">Muokkaa</button></a>
+    </td>
+
+     <td> 
+        <a href="{{base_path}}/ainesosat/{{ainesosa.id}}/poista" class="btn btn-danger">Poista</button></a>
+    </td>
+
+ <td> 
+    <form method="post" action="{{base_path}}/ainesosat/{{ainesosa.id}}/poista" style="display: inline-block;">
+
+    <button type="submit" class="btn btn-danger">Poista ainesosa</button>
+
+  </form>
+  </td>
 
 {% endblock %}
