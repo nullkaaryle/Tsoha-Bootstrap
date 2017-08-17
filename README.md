@@ -12,6 +12,11 @@ Harjoitustyön aiheena on lääkereseptiarkisto. Rekisteröitynyt apteekki voi k
 
 ### Linkkejä sovellukseen 
 
+#### (viikko 4)
+* Kirjautumista varten
+** käyttäjätunnus: AptKum
+** salasana: AptKum123
+
 #### (viikko 3)
 * [Ainesosien listaus](http://ptalosel.users.cs.helsinki.fi/tsoha2017/ainesosat)
 * [Ainesosan lisäys](http://ptalosel.users.cs.helsinki.fi/tsoha2017/ainesosat/uusi)

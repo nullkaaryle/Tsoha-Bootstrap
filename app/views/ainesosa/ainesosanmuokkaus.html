@@ -2,6 +2,13 @@
 {% block content %}
   <h1>Muokkaa ainesosaa: {{ainesosa.aine}} </h1>
 
+ {% if message %}
+    <div 
+        class="alert alert-success">
+        {{message}}
+    </div>
+  {% endif %}  
+
   {% if errors %}
     <div class="alert alert-danger">
       <ul>

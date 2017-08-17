@@ -8,6 +8,17 @@
         HelloWorldController::sandbox();
     });
 
+// KIRJAUTUMINEN
+
+    $routes->get('/kirjautuminen', function() {
+        ApteekitController::nayta_kirjautuminen();
+    });
+
+    $routes->post('/kirjautuminen', function() {
+        ApteekitController::kirjaudu_sisaan();
+    });
+
+
 // RESEPTI 
 
     $routes->get('/reseptit', function() {
@@ -76,15 +87,11 @@
         HelloWorldController::nayta_etusivu();
     });
 
-    $routes->get('/kirjautuminen', function() {
-        HelloWorldController::nayta_kirjautuminen();
-    });
 
     $routes->get('/reseptit/1/muokkaus', function() {
         HelloWorldController::nayta_reseptinmuokkaus();
     });
-
-    
+   
 
     $routes->get('/laakkeet/1/muokkaus', function() {
         HelloWorldController::nayta_laakkeenmuokkaus();

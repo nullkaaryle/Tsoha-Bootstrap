@@ -22,10 +22,6 @@
       View::make('suunnitelmat/etusivu.html');
     }
 
-    public static function nayta_kirjautuminen(){
-      View::make('suunnitelmat/kirjautuminen.html');
-    }
-
     public static function nayta_resepti(){
       View::make('suunnitelmat/resepti.html');
     }
