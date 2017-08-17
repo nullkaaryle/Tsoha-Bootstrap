@@ -1,5 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
+
+ <p>
+    <a href="{{base_path}}/ainesosat" 
+      button type="button" 
+      class="btn btn-primary btn-xs">Palaa ainesosalistaukseen</button></a>
+  </p>
+
   <h1>Lisää uusi ainesosa</h1>
 
   {% if errors %}
@@ -15,13 +22,16 @@
   <form method="post" action="{{base_path}}/ainesosat">
    
     <div class="form-group">
-      <label>Ainesosa</label>
+      <label>Kirjoita ainesosan nimi:</label>
       <input type="text" name="aine" class="form-control" value="{{ainesosa.aine}}">
     </div>
 
     <div class="form-group">
-      <button type="submit" class="btn btn-primary">Lisää</button>
+      <button type="submit" class="btn btn-success">Lisää ainesosa</button>
     </div>
 
   </form>
+
+  
+
 {% endblock %}

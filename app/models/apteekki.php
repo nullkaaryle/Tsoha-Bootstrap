@@ -58,4 +58,5 @@ class Apteekki extends BaseModel{
         return null;
     }
 
+
 }

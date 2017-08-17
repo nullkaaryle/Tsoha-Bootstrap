@@ -33,7 +33,13 @@
             <span class="icon-bar"></span>
           </button>
           <!-- Sovelluksen nimi -->
-          <a class="navbar-brand" href="{{base_path}}/etusivu">Reseptiarkisto</a>
+          <a class="navbar-brand" href="{{base_path}}/etusivu">Reseptiarkisto
+
+          {% if user_logged_in %}
+            (Kirjautuneena: {{user_logged_in.nimi}})
+          {% endif %}
+           </a>
+
         </div>
 
         <div class="collapse navbar-collapse" id="navigation">

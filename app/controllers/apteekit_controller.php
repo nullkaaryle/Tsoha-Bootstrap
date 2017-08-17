@@ -15,7 +15,7 @@ class ApteekitController extends BaseController{
             View::make('kirjautuminen.html', array('message' => 'Väärä käyttäjätunnus tai salasana!', 'kayttajatunnus' => $params['kayttajatunnus']));
         }else{
             $_SESSION['apteekki'] = $apteekki->id;
-            Redirect::to('/reseptit', array('message' => 'Tervetuloa takaisin ' . $apteekki->nimi . '!'));
+            Redirect::to('/reseptit', array('message' => 'Tervetuloa ' . $apteekki->nimi . '!'));
         }
 
     }
