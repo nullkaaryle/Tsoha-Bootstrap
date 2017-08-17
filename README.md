@@ -16,6 +16,7 @@ Harjoitustyön aiheena on lääkereseptiarkisto. Rekisteröitynyt apteekki voi k
 * Kirjautumista varten:
   * käyttäjätunnus: AptKum
   * salasana: AptKum123
+* Ajatuksena sovelluksessa on, että apteekki voi muokata ja poistaa myös toisten apteekkien luomia tietoja
 
 * Linkkejä sovellukseen:
   * [Ainesosan muokkaus ja poisto](http://ptalosel.users.cs.helsinki.fi/tsoha2017/ainesosat/7)
