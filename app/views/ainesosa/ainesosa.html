@@ -1,24 +1,31 @@
 {% extends "base.html" %}
 {% block content %}
+{% import "macros/forms.html" as forms %}
 
 <!-- Otsikko tähän --> 
   <h2>{{ainesosa.aine}}</h2>
  
 <!-- Painikkeet tähän --> 
     <td> 
-        <a href="{{base_path}}/ainesosat/{{ainesosa.id}}/muokkaa" class="btn btn-warning">Muokkaa</button></a>
-    </td>
+        <a href="{{base_path}}/ainesosat/{{ainesosa.id}}/muokkaa" 
+        class="btn btn-warning">Muokkaa</button></a>
+        </td>
 
-     <td> 
-        <a href="{{base_path}}/ainesosat/{{ainesosa.id}}/poista" class="btn btn-danger">Poista</button></a>
-    </td>
+    <td> 
 
- <td> 
-    <form method="post" action="{{base_path}}/ainesosat/{{ainesosa.id}}/poista" style="display: inline-block;">
+    {{forms.destroy_button("#{base_path}/ainesosat/#{ainesosa.id}/poista")}}
 
-    <button type="submit" class="btn btn-danger">Poista ainesosa</button>
+<!--
+        <form 
+            method="post" 
+            action="{{base_path}}/ainesosat/{{ainesosa.id}}/poista" 
+            style="display: inline-block;">
 
-  </form>
-  </td>
+            <button 
+                type="submit" 
+                class="btn btn-danger">Poista ainesosa</button>
+        </form>
+-->
+     </td>
 
 {% endblock %}
