@@ -9,6 +9,7 @@ class Ainesosa extends BaseModel{
         $this->validators = array('validate_pituus','validate_numerot');
     }
 
+
     public static function all(){
         $query = DB::connection()->prepare('SELECT * FROM Ainesosa');
         $query->execute();
@@ -21,9 +22,9 @@ class Ainesosa extends BaseModel{
                 'aine' => $row['aine']
             ));
         }
-
         return $ainesosat;
     }
+
 
     public static function find($id){
         $query = DB::connection()->prepare('SELECT * FROM Ainesosa 
@@ -31,18 +32,17 @@ class Ainesosa extends BaseModel{
                                             LIMIT 1');
         $query->execute(array(
                             'id' => $id));
-        
         $row = $query->fetch();
-
+        
         if($row){
             $ainesosa = new Ainesosa(array(
                                         'id' => $row['id'],
                                         'aine' => $row['aine']));
             return $ainesosa;
         }
-
         return null;
     }
+
 
     public function save(){
         $query = DB::connection()->prepare('INSERT INTO Ainesosa (aine) 
@@ -50,10 +50,10 @@ class Ainesosa extends BaseModel{
                                             RETURNING id');
         $query->execute(array(
                             'aine' => $this->aine));
-        
         $row = $query->fetch();
         $this->id = $row['id'];
     }
+
 
     public function update($aine){
         $query = DB::connection()->prepare('UPDATE Ainesosa 
@@ -63,10 +63,10 @@ class Ainesosa extends BaseModel{
         $query->execute(array(
                             'aine' => $aine,
                             'id' => $this->id));
-       
         $row = $query->fetch();
         $this->id = $row['id'];
     }
+
 
     public function destroy(){
         $query = DB::connection()->prepare('DELETE FROM Ainesosa 

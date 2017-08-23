@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+
 {% block content %}
   
     {% if message %}
@@ -8,11 +9,16 @@
         </div>
     {% endif %} 
 
-  <h1>Reseptiarkisto</h1>
-  
-  <h3>Tervetuloa!</h3>
+    <h1>Reseptiarkisto</h1>
    
-  <a href="/tsoha2017/kirjautuminen" 
-    class="btn btn-primary">Jatka kirjautumiseen</a>
-  
+    {% if user_logged_in %}
+        <h3>Tervetuloa {{user_logged_in.nimi}}!</h3>
+        <a href="{{base_path}}/reseptit" 
+        class="btn btn-primary">Siirry reseptilistaukseen</a>
+    {% else %}
+        <h3>Tervetuloa vieras!</h3>
+        <a href="{{base_path}}/kirjautuminen" 
+        class="btn btn-primary">Jatka kirjautumiseen</a>
+    {% endif %}
+
 {% endblock %}

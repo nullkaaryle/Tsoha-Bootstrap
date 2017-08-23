@@ -5,11 +5,11 @@
     }
 
     $routes->get('/', function() {
-        HelloWorldController::index();
+        EtusivuController::index();
     });
 
     $routes->get('/etusivu', function() {
-        HelloWorldController::nayta_etusivu();
+        EtusivuController::nayta_etusivu();
     });
 
     $routes->get('/hiekkalaatikko', function() {

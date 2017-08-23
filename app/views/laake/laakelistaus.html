@@ -15,7 +15,6 @@
         <th>Rekisteröintinumero</th>
         <th>Tuotenimi</th>
         <th>Pakkauskoko ja lääkemuoto</th>
-        <th colspan="2"> Toiminnot</th>
       </tr>
     </thead>
 
@@ -25,11 +24,9 @@
 
       {% for laake in laakkeet %}
       <tr>
-        <td><a href="{{base_path}}/laakkeet/{{laake.id}}">{{laake.id}}</td>
+        <td>{{laake.id}}</td>
         <td><a href="{{base_path}}/laakkeet/{{laake.id}}">{{laake.tuotenimi}}</td>
         <td>{{laake.pakkaus}}</td>
-        <td><button type="button" class="btn btn-warning" href="#">Muokkaa</button></td>
-        <td><button type="button" class="btn btn-danger" href="#">Poista</button></td>
       </tr>
       {% endfor %}
     
