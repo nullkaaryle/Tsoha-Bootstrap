@@ -1,10 +1,18 @@
 {% extends "base.html" %}
 {% block content %}
   
+    {% if message %}
+        <div 
+            class="alert alert-success">
+            {{message}}
+        </div>
+    {% endif %} 
+
   <h1>Reseptiarkisto</h1>
   
-  <h3>Tervetuloa</h3>
+  <h3>Tervetuloa!</h3>
    
-  <a href="/tsoha2017/kirjautuminen" class="btn btn-primary">Jatka kirjautumiseen</a>
+  <a href="/tsoha2017/kirjautuminen" 
+    class="btn btn-primary">Jatka kirjautumiseen</a>
   
 {% endblock %}
