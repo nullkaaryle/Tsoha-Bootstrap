@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 
+<!-- Otsikko --> 
   <h1>Kirjaudu sisään</h1>
 
+<!-- Viestit --> 
   {% if message %}
     <div 
         class="alert alert-danger">
@@ -10,36 +12,28 @@
     </div>
   {% endif %}   
 
-  <!-- Kaikki lomakkeen elementit form-tagin sisään -->
-  <form 
-      method="post" 
-      action="{{base_path}}/kirjautuminen">
+<!-- Lomake käyttäjätunnuksen ja salasanan syöttämiselle -->
+  <form method="post" action="{{base_path}}/kirjautuminen">
 
-    <!-- Tekstikenttä käyttäjätunnukselle -->
-      <div 
-        class="form-group">
-        <label>Käyttäjätunnus</label>
-        <input type="text"
-        autofocus 
-        class="form-control" 
-        name="kayttajatunnus"
-        value="{{kayttajatunnus}}">
-      </div>
+    <div class="form-group">
+      <label>Käyttäjätunnus</label>
+      <input type="text"
+      autofocus 
+      class="form-control" 
+      name="kayttajatunnus"
+      value="{{kayttajatunnus}}">
+    </div>
 
-    <!-- Salasanakenttä salasanalle -->
-      <div 
-        class="form-group">
-        <label>Salasana</label>
-        <input type="password" 
-        class="form-control"
-        name="salasana">
-      </div>                                  
+<!-- Salasanakenttä salasanalle -->
+    <div class="form-group">
+      <label>Salasana</label>
+      <input type="password" 
+      class="form-control"
+      name="salasana">
+    </div>                                  
 
-    <!-- Painike -->
-      <button 
-        type="submit"
-        class="btn btn-primary">Kirjaudu sisään
-      </button>
+<!-- Sisäänkirjautumispainike -->
+    <button type="submit" class="btn btn-primary">Kirjaudu sisään</button>
     
   </form>
 

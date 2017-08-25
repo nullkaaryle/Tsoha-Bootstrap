@@ -1,24 +1,26 @@
 {% extends "base.html" %}
-
 {% block content %}
   
-    {% if message %}
-        <div 
-            class="alert alert-success">
-            {{message}}
-        </div>
-    {% endif %} 
+<!-- Viestit -->  
+  {% if message %}
+    <div 
+      class="alert alert-success">
+      {{message}}
+    </div>
+  {% endif %} 
 
-    <h1>Reseptiarkisto</h1>
+<!-- Otsikko --> 
+  <h1>Reseptiarkisto</h1>
    
-    {% if user_logged_in %}
-        <h3>Tervetuloa {{user_logged_in.nimi}}!</h3>
-        <a href="{{base_path}}/reseptit" 
-        class="btn btn-primary">Siirry reseptilistaukseen</a>
-    {% else %}
+<!-- Tervehdysteksti kirjautuneelle käyttäjälle -->    
+  {% if user_logged_in %}
+    <h3>Tervetuloa {{user_logged_in.nimi}}!</h3>
+    <a href="{{base_path}}/reseptit" class="btn btn-primary">Siirry reseptilistaukseen</a>
+  
+<!-- Vierailijalle kehotus kirjautua sisään-->  
+  {% else %}
         <h3>Tervetuloa vieras!</h3>
-        <a href="{{base_path}}/kirjautuminen" 
-        class="btn btn-primary">Jatka kirjautumiseen</a>
-    {% endif %}
+        <a href="{{base_path}}/kirjautuminen" class="btn btn-primary">Jatka kirjautumiseen</a>      
+  {% endif %}
 
 {% endblock %}

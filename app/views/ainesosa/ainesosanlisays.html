@@ -1,15 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
 
- <p>
-    <a href="{{base_path}}/ainesosat" 
-      button type="button" 
-      class="btn btn-primary btn-xs">Palaa ainesosalistaukseen</button></a>
+<!-- Linkki yläsivulle --> 
+  <p>
+    <a href="{{base_path}}/ainesosat" button type="button" class="btn btn-primary btn-xs">Palaa ainesosalistaukseen</button></a>
   </p>
 
+<!-- Otsikko --> 
   <h1>Lisää uusi ainesosa</h1>
 
+<!-- Varoitukset --> 
   {% if errors %}
+    
     <div class="alert alert-danger">
       <ul>
         {% for error in errors %}
@@ -17,8 +19,10 @@
         {% endfor %}
       </ul>
     </div>
-   {% endif %}   
 
+  {% endif %}   
+
+<!-- Lisäyslomake --> 
   <form method="post" action="{{base_path}}/ainesosat">
    
     <div class="form-group">
@@ -31,7 +35,5 @@
     </div>
 
   </form>
-
-  
 
 {% endblock %}

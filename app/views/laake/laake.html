@@ -1,40 +1,36 @@
 {% extends "base.html" %}
 {% block content %}
 
+<!-- Linkki yläsivulle --> 
   <p>
-      <a href="{{base_path}}/laakkeet" 
-      button type="button" 
-      class="btn btn-primary btn-xs">Palaa lääkelistaukseen</button></a>
+      <a href="{{base_path}}/laakkeet" button type="button" class="btn btn-primary btn-xs">Palaa lääkelistaukseen</button></a>
   </p>
 
+<!-- Otsikko --> 
   <h2>{{laake.tuotenimi}}</h2>
 
- 
-
-  <!-- Tiedot tulee listana tähän -->
+<!-- Lääkkeen tiedot -->
+  
   <ul>
-
     <li><strong>Lääkeaine:</strong>...</li>
     <li><strong>Vahvuus:</strong>...</li>
     <li><strong>Pakkaus:</strong> {{laake.pakkaus}}</li>
-    
   </ul>
 
-   {% for laakkeenosa in laakkeenosat %}
-      <tr>
-        <td>{{laakkeenosa.nimi}}</td>
-         <td>{{laakkeenosa.vahvuus}}</td>
-      </tr>
-    {% endfor %}
+  {% for laakkeenosa in laakkeenosat %}
+    <tr>
+      <td>{{laakkeenosa.nimi}}</td>
+      <td>{{laakkeenosa.vahvuus}}</td>
+    </tr>
+  {% endfor %}
 
-  <!-- Kuvaus tulee tähän -->
   <p>
     <strong>Käyttö:</strong>
     {{laake.kayttoaihe}}
   </p>
 
     
- <!-- Painikkeet tähän --> 
+ <!-- Muokkauspainikkeet --> 
         <td><button type="button" class="btn btn-warning" href="#">Muokkaa</button></td>
         <td><button type="button" class="btn btn-danger" href="#">Poista</button></td>
       </tr>

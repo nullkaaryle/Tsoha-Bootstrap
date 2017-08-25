@@ -1,23 +1,27 @@
 {% extends "base.html" %}
 {% block content %}
 
+<!-- Linkki yläsivulle --> 
   <p>
-    <a href="{{base_path}}/reseptit" 
-      button type="button" 
-      class="btn btn-primary btn-xs">Palaa reseptilistaukseen</button></a>
+    <a href="{{base_path}}/reseptit" button type="button" class="btn btn-primary btn-xs">Palaa reseptilistaukseen</button></a>
   </p>
 
+<!-- Otsikko --> 
   <h1>Lisää uusi resepti</h1>
 
+<!-- Lisäyslomake, kesken!  --> 
   <form method="post" action="{{base_path}}/reseptit">
+    
     <div class="form-group">
-      <label>To be done...</label>
+      <label>...</label>
       <input type="text" name="reseptijotain" class="form-control">
     </div>
 
-
+<!-- Tallennuspainike  --> 
     <div class="form-group">
-      <button type="submit" class="btn btn-primary">Lisää</button>
+      <button type="submit" class="btn btn-primary">(Lisää)</button>
     </div>
+
   </form>
+
 {% endblock %}
