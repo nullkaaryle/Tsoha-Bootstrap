@@ -1,22 +1,22 @@
 <?php
 
-class Ainesosa extends BaseModel{
+class Ainesosa extends BaseModel {
 
     public $id, $aine;
 
-    public function __construct($attributes){
+    public function __construct($attributes) {
         parent::__construct($attributes);
         $this->validators = array('validate_pituus','validate_numerot');
     }
 
 
-    public static function all(){
+    public static function all() {
         $query = DB::connection()->prepare('SELECT * FROM Ainesosa');
         $query->execute();
         $rows = $query->fetchAll();
         $ainesosat = array();
 
-        foreach($rows as $row){
+        foreach($rows as $row) {
             $ainesosat[] = new Ainesosa(array(
                 'id' => $row['id'],
                 'aine' => $row['aine']
@@ -26,7 +26,7 @@ class Ainesosa extends BaseModel{
     }
 
 
-    public static function find($id){
+    public static function find($id) {
         $query = DB::connection()->prepare('SELECT * FROM Ainesosa 
                                             WHERE id = :id 
                                             LIMIT 1');
@@ -34,7 +34,7 @@ class Ainesosa extends BaseModel{
                             'id' => $id));
         $row = $query->fetch();
         
-        if($row){
+        if ($row){
             $ainesosa = new Ainesosa(array(
                                         'id' => $row['id'],
                                         'aine' => $row['aine']));
@@ -44,7 +44,7 @@ class Ainesosa extends BaseModel{
     }
 
 
-    public function save(){
+    public function save() {
         $query = DB::connection()->prepare('INSERT INTO Ainesosa (aine) 
                                             VALUES (:aine) 
                                             RETURNING id');
@@ -55,7 +55,7 @@ class Ainesosa extends BaseModel{
     }
 
 
-    public function update($aine){
+    public function update($aine) {
         $query = DB::connection()->prepare('UPDATE Ainesosa 
                                             SET aine = :aine 
                                             WHERE id = :id 
@@ -68,18 +68,19 @@ class Ainesosa extends BaseModel{
     }
 
 
-    public function destroy(){
+    public function destroy() {
         $query = DB::connection()->prepare('DELETE FROM Ainesosa 
                                             WHERE id = :id');
         $query->execute(array(
                             'id' => $this->id));
     }
 
-
+//VALIDOINTIMETODIT
 
     public function validate_pituus() {
         return parent::validate_string_length($this->aine, 5);  
     }
+
 
      public function validate_numerot() {
         return parent::validate_string_numerics($this->aine);  

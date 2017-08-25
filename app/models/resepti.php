@@ -1,14 +1,15 @@
 <?php
 
-class Resepti extends BaseModel{
+class Resepti extends BaseModel {
 
     public $id, $apteekki, $potilas, $laakari, $laake, $ohje, $paivamaara;
 
-    public function __construct($attributes){
+    public function __construct($attributes) {
         parent::__construct($attributes);
     }
 
-    public static function all(){
+
+    public static function all() {
         $query = DB::connection()->prepare('SELECT r.id, 
                                                     ap.nimi AS apteekki, 
                                                     po.sukunimi AS potilas_sukunimi, 
@@ -28,7 +29,7 @@ class Resepti extends BaseModel{
         $rows = $query->fetchAll();
         $reseptit = array();
 
-        foreach($rows as $row){
+        foreach($rows as $row) {
             $reseptit[] = new Resepti(array(
                 'id'        =>  $row['id'],
                 'apteekki'  =>  $row['apteekki'],
@@ -44,7 +45,7 @@ class Resepti extends BaseModel{
     }
 
 
-    public static function find($id){
+    public static function find($id) {
         $query = DB::connection()->prepare('SELECT r.id, 
                                                     ap.nimi AS apteekki, 
                                                     po.sukunimi AS potilas_sukunimi, 
@@ -63,7 +64,7 @@ class Resepti extends BaseModel{
         $query->execute(array('id' => $id));
         $row = $query->fetch();
 
-        if($row){
+        if ($row) {
             $resepti = new Resepti(array(
                 'id'        => $row['id'],
                 'apteekki'  =>  $row['apteekki'],
@@ -80,7 +81,7 @@ class Resepti extends BaseModel{
         return null;
     }
 
-    public function save(){
+    public function save() {
         $query = DB::connection()->prepare('INSERT INTO Resepti (
                                                             apteekki, 
                                                             potilas, 
