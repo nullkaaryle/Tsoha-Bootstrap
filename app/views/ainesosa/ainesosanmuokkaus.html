@@ -11,16 +11,13 @@
 
 <!-- Viestit --> 
   {% if message %}
-
     <div 
         class="alert alert-success">{{message}}
     </div>
-
   {% endif %}  
 
 <!-- Varoitukset --> 
   {% if errors %}
-
     <div class="alert alert-danger">
       <ul>
         {% for error in errors %}
@@ -28,7 +25,6 @@
         {% endfor %}
       </ul>
     </div>
-
   {% endif %}   
 
 <!-- Muokkauslomake --> 
