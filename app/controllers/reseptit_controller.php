@@ -21,8 +21,8 @@ class ReseptitController extends BaseController{
 
     public static function tallenna_resepti(){
         $params = $_POST;
-        Kint::dump($params);
-        /*
+        //Kint::dump($params);
+        
         $apteekki = $params['apteekki'];
         $potilas = $params['potilas'];
         $laakari = $params['laakari'];
@@ -44,7 +44,7 @@ class ReseptitController extends BaseController{
             Redirect::to('/reseptit/' . $resepti->id, array('message' => 'Uusi resepti tallennettu!'));
         } else {
             View::make('resepti/reseptinlisays.html', array('errors' => $errors, 'resepti' => $resepti));
-        }*/
+        }
     }
 
 

@@ -6,6 +6,7 @@ class Resepti extends BaseModel {
 
     public function __construct($attributes) {
         parent::__construct($attributes);
+        $this->validators = array();
     }
 
 
@@ -83,6 +84,7 @@ class Resepti extends BaseModel {
 
 
     public function save() {
+        $paivamaara = date("Y-m-d"); 
         $query = DB::connection()->prepare('INSERT INTO Resepti (
                                                             apteekki, 
                                                             potilas, 
@@ -96,7 +98,7 @@ class Resepti extends BaseModel {
                                                             :laakari, 
                                                             :laake, 
                                                             :ohje, 
-                                                            date(Y-m-d, timestamp)) 
+                                                            :paivamaara) 
                                                     RETURNING id');
         $query->execute(array(
                             'apteekki'  => $this->apteekki, 
@@ -104,7 +106,8 @@ class Resepti extends BaseModel {
                             'laakari'   => $this->laakari,
                             'laake'     => $this->laake,
                             'ohje'      => $this->ohje,
-                            'paivamaara' => $this->paivamaara
+                            'paivamaara'=> $paivamaara
+                            
                             ));
         $row = $query->fetch();
 

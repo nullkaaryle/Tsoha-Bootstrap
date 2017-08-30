@@ -22,8 +22,10 @@
         
  <!-- Muokkauspainikkeet --> 
   <tr>
-    <td><button type="button" class="btn btn-warning" href="#">(Muokkaa)</button></td>
-    <td><button type="button" class="btn btn-danger" href="#">(Poista)</button></td>
+    <td><button type="button" class="btn btn-warning" href="{{base_path}}/reseptit/{{resepti.id}}/muokkaa">Muokkaa</button></td>
+    <td> 
+    {{forms.destroy_button("#{base_path}/reseptit/#{resepti.id}/poista")}}
+  </td>
   </tr>
 
 {% endblock %}
