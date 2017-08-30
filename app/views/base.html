@@ -13,12 +13,13 @@
     </title>
 
     {% block head %}
-      <!-- Bootstrap (tyylitiedosto) -->
+<!-- Bootstrap (tyylitiedosto) -->
       <link href="{{base_path}}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-      <!-- Oma tyylitiedostomme -->
+<!-- Oma tyylitiedostomme -->
       <link href="{{base_path}}/assets/css/site.css" rel="stylesheet">
     {% endblock %}
+  
   </head>
 
   <body>
@@ -37,23 +38,26 @@
                   <span class="icon-bar"></span>
           </button>
          
-          <!-- Sovelluksen nimi -->
-
+<!-- Sovelluksen nimi -->
           <a class="navbar-brand" href="{{base_path}}">Reseptiarkisto</a>
         
         </div>
 
         <div class="collapse navbar-collapse" id="navigation">
           <ul class="nav navbar-nav">
-            <!-- Navigaation linkit -->
+            
+<!-- Navigaation linkit -->
             <li><a href="{{base_path}}/etusivu">Etusivu</a></li>
-            <li><a href="{{base_path}}/reseptit">Reseptit</a></li>
-             <li><a href="{{base_path}}/laakkeet">Lääkkeet</a></li>
-            <li><a href="{{base_path}}/ainesosat">Ainesosat</a></li>
+            
+            {% if user_logged_in %}
+              <li><a href="{{base_path}}/reseptit">Reseptit</a></li>
+              <li><a href="{{base_path}}/laakkeet">Lääkkeet</a></li>
+              <li><a href="{{base_path}}/ainesosat">Ainesosat</a></li>
+            {% endif %}
+
           </ul>
 
           {% if user_logged_in %}
-    
             <form class="navbar-form navbar-right" 
               method="post"
               action="{{base_path}}/kirjaudu_ulos">
@@ -62,7 +66,6 @@
             </form>
               
           {% else %}
-
             <p class="navbar-nav navbar-right"> <a href="{{base_path}}/kirjautuminen" class="btn btn-primary btn-xs">Vieras <br> kirjaudu sisään</br></a></p>   
 
           {% endif %}
@@ -72,18 +75,18 @@
     </nav>
 
     <div id="main-container">
-      <!-- Dynaaminen sisältö tulee tähän -->
+<!-- Dynaaminen sisältö tulee tähän -->
       {% block content %}{% endblock %}
     </div>
 
     {% block body %}
-      <!-- jQuery -->
+<!-- jQuery -->
       <script src="{{base_path}}/vendor/jquery.min.js"></script>
 
-      <!-- Bootstrap (skriptitiedosto) -->
+<!-- Bootstrap (skriptitiedosto) -->
       <script src="{{base_path}}/vendor/bootstrap/js/bootstrap.min.js"></script>
 
-      <!-- Oma skriptitiedostomme -->
+<!-- Oma skriptitiedostomme -->
       <script src="{{base_path}}/assets/js/site.js"></script>
     {% endblock %}
   </body>

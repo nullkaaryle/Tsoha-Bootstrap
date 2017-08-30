@@ -37,7 +37,7 @@ class Resepti extends BaseModel {
                 'laakari'   =>  $row['laakari_sukunimi'] . ', ' . $row['laakari_etunimi'],
                 'laake'     =>  $row['laake'],
                 'ohje'      =>  $row['ohje'],
-                'paivamaara' =>  $row['paivamaara']
+                'paivamaara' => $row['paivamaara']
             ));
         }
 
@@ -81,6 +81,7 @@ class Resepti extends BaseModel {
         return null;
     }
 
+
     public function save() {
         $query = DB::connection()->prepare('INSERT INTO Resepti (
                                                             apteekki, 
@@ -109,4 +110,5 @@ class Resepti extends BaseModel {
 
         $this->id = $row['id'];
     }
+
 }

@@ -1,38 +1,73 @@
 {% extends "base.html" %}
 {% block content %}
 
-<!-- Linkki yläsivulle --> 
+<!-- Linkki yläsivulle -->
   <p>
       <a href="{{base_path}}/laakkeet" button type="button" class="btn btn-primary btn-xs">Palaa lääkelistaukseen</button></a>
   </p>
 
-<!-- Otsikko --> 
+<!-- Otsikko -->
   <h2>{{laake.tuotenimi}}</h2>
 
 <!-- Lääkkeen tiedot -->
   
-  <ul>
-    <li><strong>Lääkeaine:</strong>...</li>
-    <li><strong>Vahvuus:</strong>...</li>
-    <li><strong>Pakkaus:</strong> {{laake.pakkaus}}</li>
-  </ul>
 
-  {% for laakkeenosa in laakkeenosat %}
-    <tr>
-      <td>{{laakkeenosa.nimi}}</td>
-      <td>{{laakkeenosa.vahvuus}}</td>
-    </tr>
-  {% endfor %}
 
-  <p>
-    <strong>Käyttö:</strong>
-    {{laake.kayttoaihe}}
-  </p>
+  <table class="table table-bordered">
+    
+      <tr>
+        <th>Myyntiluvan numero</th>
+        <td>{{laake.id}}</td>
+      </tr>
+
+      <tr>
+        <th>Pakkauskoko</th>
+        <td>{{laake.pakkaus}}</td>
+      </tr>
+      
+<!-- Listaus lääkeen ainesosista ja vahvuuksista -->
+       
+      <tr>
+        <th>Lääkkeen sisältämät ainesosat</th>
+        <td> <table class="table">
+
+
+          <tr>  
+            <th>Ainesosa</th>
+          <th>Määrä</th>
+             
+          </tr>
+        
+        {% for laakkeenosa in laakkeenosat %}
+         <tr>  
+            <td>{{laakkeenosa.ainesosa_id}}</td>  
+           <td>{{laakkeenosa.vahvuus}}</td> 
+          </tr>
+        {% endfor %}
+
+        </table></td>
+      </tr>
+
+<!-- Lääkkeen käyttöaihe -->  
+      <tr>
+        <th>Käyttö</th>
+        <td>{{laake.kayttoaihe}}</td>
+      </tr>
+   
+
+  </table>
 
     
- <!-- Muokkauspainikkeet --> 
+ <!-- Muokkauspainikkeet -->
         <td><button type="button" class="btn btn-warning" href="#">Muokkaa</button></td>
         <td><button type="button" class="btn btn-danger" href="#">Poista</button></td>
-      </tr>
+
+
+{% for laakkeenosa in laakkeenosat %}
+         <tr>  
+            <td>{{laakkeenosa.ainesosa_id}}</td>  
+           <td>{{laakkeenosa.vahvuus}}</td> 
+          </tr>
+        {% endfor %}
 
 {% endblock %}
