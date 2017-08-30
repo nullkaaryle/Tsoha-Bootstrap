@@ -107,11 +107,42 @@ class Resepti extends BaseModel {
                             'laake'     => $this->laake,
                             'ohje'      => $this->ohje,
                             'paivamaara'=> $paivamaara
-                            
                             ));
+        
         $row = $query->fetch();
 
         $this->id = $row['id'];
+    }
+
+
+    public function update() {
+        $query = DB::connection()->prepare('UPDATE Resepti 
+                                            SET potilas = :potilas,
+                                                laakari = :laakari,
+                                                laake = :laake,
+                                                ohje = :ohje
+                                            WHERE id = :id 
+                                            RETURNING id');
+        $query->execute(array(
+                            'apteekki'  => $this->apteekki, 
+                            'potilas'   => $this->potilas,
+                            'laakari'   => $this->laakari,
+                            'laake'     => $this->laake,
+                            'ohje'      => $this->ohje,
+                            'paivamaara'=> $this->paivamaara
+                            ));
+
+        $row = $query->fetch();
+        $this->id = $row['id'];
+    }
+
+
+
+    public function destroy() {
+        $query = DB::connection()->prepare('DELETE FROM Resepti 
+                                            WHERE id = :id');
+        $query->execute(array(
+                            'id' => $this->id));
     }
 
 }

@@ -49,7 +49,7 @@
         ReseptitController::tallenna_resepti();
     });
 
-    $routes->get('/reseptit/:id/muokkaus', 'check_logged_in', function($id) {
+    $routes->get('/reseptit/:id/muokkaa', 'check_logged_in', function($id) {
         ReseptitController::nayta_reseptinmuokkaus($id);
     });
 
