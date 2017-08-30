@@ -11,7 +11,9 @@ class Ainesosa extends BaseModel {
 
 
     public static function all() {
-        $query = DB::connection()->prepare('SELECT * FROM Ainesosa');
+        $query = DB::connection()->prepare('SELECT * 
+                                            FROM Ainesosa
+                                            ORDER BY id');
         $query->execute();
         $rows = $query->fetchAll();
         $ainesosat = array();

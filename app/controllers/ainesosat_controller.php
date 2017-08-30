@@ -41,9 +41,6 @@ class AinesosatController extends BaseController{
         $params = $_POST;
         $aine = $params['aine'];
         $ainesosa = Ainesosa::find($id);
-        //$ainesosa = new Ainesosa(array(
-        //    'aine' => $params['aine']
-        //));
         
         $errors = $ainesosa->errors();
 

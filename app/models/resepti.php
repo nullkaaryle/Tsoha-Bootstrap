@@ -96,7 +96,7 @@ class Resepti extends BaseModel {
                                                             :laakari, 
                                                             :laake, 
                                                             :ohje, 
-                                                            :paivamaara) 
+                                                            date(Y-m-d, timestamp)) 
                                                     RETURNING id');
         $query->execute(array(
                             'apteekki'  => $this->apteekki, 
