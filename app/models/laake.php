@@ -34,7 +34,7 @@ class Laake extends BaseModel {
                                                     la.tuotenimi,
                                                     la.pakkaus,
                                                     la.kayttoaihe,
-                                                    ao.aine AS ainesosa_id,
+                                                    ao.aine AS ainesosa,
                                                     lo.vahvuus AS vahvuus
                                             FROM Laake la
                                             INNER JOIN Laakkeenosa lo ON la.id = lo.laake
@@ -50,7 +50,7 @@ class Laake extends BaseModel {
                 'tuotenimi' => $row['tuotenimi'],
                 'pakkaus'   => $row['pakkaus'],
                 'kayttoaihe' => $row['kayttoaihe'],
-                'ainesosa_id' => $row['ainesosa_id'],
+                'ainesosa' => $row['ainesosa'],
                 'vahvuus' => $row['vahvuus']
             ));
 

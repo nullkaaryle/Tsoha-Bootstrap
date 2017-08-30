@@ -54,10 +54,8 @@ class Laakkeenosa extends BaseModel {
 
         $query = DB::connection()->prepare('SELECT  lo.id,
                                                     lo.laake,
-                                                    lo.ainesosa,
-                                                    lo.vahvuus,
-                                                    ao.id AS ainesosa_id,
-                                                    ao.aine AS ainesosa_aine
+                                                    ao.aine AS ainesosa_aine,
+                                                    lo.vahvuus
                                             FROM Laakkeenosa lo
                                             INNER JOIN Ainesosa ao ON lo.ainesosa = ao.id
                                             WHERE lo.laake = :product_id');
@@ -72,10 +70,8 @@ class Laakkeenosa extends BaseModel {
             $laakkeenosat[] = new Laakkeenosa(array(
                 'id'            => $row['id'],
                 'laake'         => $row['laake'],
-                'ainesosa'      => $row['ainesosa'],
-                'vahvuus'       => $row['vahvuus'],
-                'ainesosa_id'   => $row['ainesosa_id'],
-                'ainesosa_aine' => $row['ainesosa_aine']
+                'ainesosa'      => $row['ainesosa_aine'],
+                'vahvuus'       => $row['vahvuus']
             ));
         }
         return $laakkeenosat;

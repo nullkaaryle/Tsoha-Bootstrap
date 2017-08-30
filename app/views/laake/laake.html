@@ -9,12 +9,10 @@
 <!-- Otsikko -->
   <h2>{{laake.tuotenimi}}</h2>
 
-<!-- Lääkkeen tiedot -->
-  
-
-
+<!-- Lääkkeen tiedot taulukossa-->
   <table class="table table-bordered">
-    
+
+<!-- Lääkkeen id ja pakkauskoko-->    
       <tr>
         <th>Myyntiluvan numero</th>
         <td>{{laake.id}}</td>
@@ -26,22 +24,19 @@
       </tr>
       
 <!-- Listaus lääkeen ainesosista ja vahvuuksista -->
-       
       <tr>
         <th>Lääkkeen sisältämät ainesosat</th>
         <td> <table class="table">
 
-
           <tr>  
             <th>Ainesosa</th>
-          <th>Määrä</th>
-             
+            <th>Määrä</th>
           </tr>
         
         {% for laakkeenosa in laakkeenosat %}
-         <tr>  
-            <td>{{laakkeenosa.ainesosa_id}}</td>  
-           <td>{{laakkeenosa.vahvuus}}</td> 
+          <tr>  
+            <td>{{laakkeenosa.ainesosa}}</td> 
+            <td>{{laakkeenosa.vahvuus}}</td> 
           </tr>
         {% endfor %}
 
@@ -54,20 +49,11 @@
         <td>{{laake.kayttoaihe}}</td>
       </tr>
    
-
   </table>
 
     
- <!-- Muokkauspainikkeet -->
+ <!-- Muokkauspainikkeet taulukon alla -->
         <td><button type="button" class="btn btn-warning" href="#">Muokkaa</button></td>
         <td><button type="button" class="btn btn-danger" href="#">Poista</button></td>
-
-
-{% for laakkeenosa in laakkeenosat %}
-         <tr>  
-            <td>{{laakkeenosa.ainesosa_id}}</td>  
-           <td>{{laakkeenosa.vahvuus}}</td> 
-          </tr>
-        {% endfor %}
 
 {% endblock %}
