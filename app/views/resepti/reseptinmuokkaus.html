@@ -47,30 +47,33 @@
     <div class="form-group">
       <label for="sel1">Vaihda potilas:</label>
       <select name="potilas" class="form-control" >
-      <option selected hidden>{{resepti.potilas}}</option>
       {% for potilas in potilaat %}
+      <option selected hidden value="{{resepti_idt.potilas}}">{{resepti.potilas}}</option>
         <option value="{{potilas.id}}">{{potilas.sukunimi}} {{potilas.etunimi}}, {{potilas.syntymaaika}}</option>
       {% endfor %}
       </select>
     </div>
 
     <!-- Lääkärin valinta --> 
+    
      <div class="form-group">
       <label for="sel1">Vaihda lääkäri:</label>
       <select name="laakari" class="form-control">
-      <option selected hidden>{{resepti.laakari}}</option>
-      {% for laakari in laakarit %}
+      <option selected hidden value="{{resepti_idt.laakari}}">{{resepti.laakari}}</option>
+
+        {% for laakari in laakarit %}
         <option value="{{laakari.id}}">{{laakari.sukunimi}} {{laakari.etunimi}}, tunnus: {{laakari.tunnus}}</option>
-         {% endfor %}
+        {% endfor %}
+
       </select>
     </div>
-
+ 
 <!-- Lääkkeen valinta --> 
     <div class="form-group">
       <label for="sel1">Vaihda lääke:</label>
       <select name="laake" class="form-control">
-         <option selected hidden>{{resepti.laake}}</option>
-        {% for laake in laakkeet %}
+      {% for laake in laakkeet %}
+         <option selected hidden value="{{resepti_idt.laake}}">{{resepti.laake}}</option>
         <option value="{{laake.id}}">{{laake.tuotenimi}} - {{laake.pakkaus}}</option>
          {% endfor %}
       </select>

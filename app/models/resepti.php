@@ -83,6 +83,43 @@ class Resepti extends BaseModel {
     }
 
 
+    public static function find_ids($id) {
+        $query = DB::connection()->prepare('SELECT r.id, 
+                                                    ap.id AS apteekki, 
+                                                    po.id AS potilas,
+                                                    li.id AS laakari,
+                                                    le.id AS laake, 
+                                                    r.ohje, 
+                                                    r.paivamaara
+                                            FROM Resepti r
+                                            INNER JOIN Apteekki ap ON r.apteekki = ap.id
+                                            INNER JOIN Potilas po ON r.potilas = po.id
+                                            INNER JOIN Laakari li ON r.laakari = li.id
+                                            INNER JOIN Laake le ON r.laake = le.id
+                                            WHERE r.id = :id LIMIT 1');
+        $query->execute(array('id' => $id));
+        $row = $query->fetch();
+
+        if ($row) {
+            $resepti = new Resepti(array(
+                'id'        =>  $row['id'],
+                'apteekki'  =>  $row['apteekki'],
+                'potilas'   =>  $row['potilas'],
+                'laakari'   =>  $row['laakari'],
+                'laake'     =>  $row['laake'],
+                'ohje'      =>  $row['ohje'],
+                'paivamaara' => $row['paivamaara']
+            ));
+
+            return $resepti;
+        }
+
+        return null;
+    }
+
+
+
+
     public function save() {
         $paivamaara = date("Y-m-d"); 
         $query = DB::connection()->prepare('INSERT INTO Resepti (
@@ -124,12 +161,11 @@ class Resepti extends BaseModel {
                                             WHERE id = :id 
                                             RETURNING id');
         $query->execute(array(
-                            'apteekki'  => $this->apteekki, 
+                            'id'        => $this->id,    
                             'potilas'   => $this->potilas,
                             'laakari'   => $this->laakari,
                             'laake'     => $this->laake,
-                            'ohje'      => $this->ohje,
-                            'paivamaara'=> $this->paivamaara
+                            'ohje'      => $this->ohje
                             ));
 
         $row = $query->fetch();

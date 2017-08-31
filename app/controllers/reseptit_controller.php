@@ -48,16 +48,19 @@ class ReseptitController extends BaseController{
     }
 
     public static function nayta_reseptinmuokkaus($id){
+        $resepti_idt = Resepti::find_ids($id);
         $resepti = Resepti::find($id);
         $potilaat = Potilas::all();
         $laakarit = Laakari::all();
         $laakkeet = Laake::all();
-        View::make('resepti/reseptinmuokkaus.html', array('resepti' => $resepti, 'potilaat' => $potilaat, 'laakarit' => $laakarit, 'laakkeet' => $laakkeet));
+        View::make('resepti/reseptinmuokkaus.html', array('resepti_idt' => $resepti_idt, 'resepti' => $resepti, 'potilaat' => $potilaat, 'laakarit' => $laakarit, 'laakkeet' => $laakkeet));
     }
 
     public static function muokkaa_reseptia($id) {
         $params = $_POST;
 
+        Kint::dump($params);
+        /*
         $attributes = array(
             'id' => $id,
             'apteekki' => $params['apteekki'],
@@ -78,6 +81,7 @@ class ReseptitController extends BaseController{
             $resepti->update();
             Redirect::to('/reseptit/' . $resepti->id, array('message' => 'Reseptiä on muokattu onnistuneesti!'));
         } 
+        */
     }
 
 
