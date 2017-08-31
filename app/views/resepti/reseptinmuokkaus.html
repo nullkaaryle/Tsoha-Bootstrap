@@ -31,13 +31,13 @@
 
 <form method="post" action="{{base_path}}/reseptit/{{resepti.id}}/muokkaa">
 
- <div class="form-group">
+    <div class="form-group">
       <label>Reseptin muokkaaja</label>
-      <input type="text" 
+        <input type="text" 
             class="form-control" 
             value="{{user_logged_in.nimi}}"
             readonly>
-      <input type="hidden" 
+        <input type="hidden" 
             name="apteekki" 
             class="form-control" 
             value="{{resepti_idt.apteekki}}">
@@ -46,11 +46,14 @@
     <!-- Potilaan valinta --> 
     <div class="form-group">
       <label for="sel1">Vaihda potilas:</label>
-      <select name="potilas" class="form-control" >
-      {% for potilas in potilaat %}
-      <option selected hidden value="{{resepti_idt.potilas}}">{{resepti.potilas}}</option>
+        <select name="potilas" class="form-control" >
+      
+        <option selected hidden value="{{resepti_idt.potilas}}">{{resepti.potilas}}</option>
+
+        {% for potilas in potilaat %}
         <option value="{{potilas.id}}">{{potilas.sukunimi}} {{potilas.etunimi}}, {{potilas.syntymaaika}}</option>
-      {% endfor %}
+        {% endfor %}
+
       </select>
     </div>
 
@@ -58,24 +61,28 @@
     
      <div class="form-group">
       <label for="sel1">Vaihda lääkäri:</label>
-      <select name="laakari" class="form-control">
-      <option selected hidden value="{{resepti_idt.laakari}}">{{resepti.laakari}}</option>
+        <select name="laakari" class="form-control">
+        
+          <option selected hidden value="{{resepti_idt.laakari}}">{{resepti.laakari}}</option>
 
-        {% for laakari in laakarit %}
-        <option value="{{laakari.id}}">{{laakari.sukunimi}} {{laakari.etunimi}}, tunnus: {{laakari.tunnus}}</option>
-        {% endfor %}
+          {% for laakari in laakarit %}
+          <option value="{{laakari.id}}">{{laakari.sukunimi}} {{laakari.etunimi}}, tunnus: {{laakari.tunnus}}</option>
+          {% endfor %}
 
-      </select>
+        </select>
     </div>
  
 <!-- Lääkkeen valinta --> 
     <div class="form-group">
       <label for="sel1">Vaihda lääke:</label>
-      <select name="laake" class="form-control">
-      {% for laake in laakkeet %}
-         <option selected hidden value="{{resepti_idt.laake}}">{{resepti.laake}}</option>
-        <option value="{{laake.id}}">{{laake.tuotenimi}} - {{laake.pakkaus}}</option>
-         {% endfor %}
+        <select name="laake" class="form-control">
+      
+          <option selected hidden value="{{resepti_idt.laake}}">{{resepti.laake}}</option>
+
+          {% for laake in laakkeet %}
+          <option value="{{laake.id}}">{{laake.tuotenimi}} - {{laake.pakkaus}}</option>
+          {% endfor %}
+
       </select>
     </div>
    

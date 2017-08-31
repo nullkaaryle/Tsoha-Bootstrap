@@ -6,7 +6,7 @@ class Resepti extends BaseModel {
 
     public function __construct($attributes) {
         parent::__construct($attributes);
-        $this->validators = array();
+        $this->validators = array('validoi_pituus');
     }
 
 
@@ -181,5 +181,10 @@ class Resepti extends BaseModel {
         $query->execute(array(
                             'id' => $this->id));
     }
+
+    public function validoi_pituus() {
+        return parent::validate_string_length($this->ohje, 3, 100);  
+    }
+
 
 }

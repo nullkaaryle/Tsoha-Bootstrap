@@ -43,11 +43,10 @@
 <!-- Potilaan valinta --> 
     <div class="form-group">
       <label for="sel1">Valitse potilas:</label>
-  <!--    <input type="hidden" name="potilas" value="{{potilas.id}}"> -->
-      <select name="potilas" class="form-control">
-      <option disabled selected hidden>Valitse potilas</option>
+      <select name="potilas" class="form-control" required>
+      <option value="" disabled selected hidden>Valitse potilas</option>
       {% for potilas in potilaat %}
-        <option value="{{potilas.id}}">{{potilas.sukunimi}} {{potilas.etunimi}}, {{potilas.syntymaaika}}</option>
+        <option value=""value="{{potilas.id}}">{{potilas.sukunimi}} {{potilas.etunimi}}, {{potilas.syntymaaika}}</option>
       {% endfor %}
       </select>
     </div>
@@ -55,10 +54,10 @@
 <!-- Lääkärin valinta --> 
      <div class="form-group">
       <label for="sel1">Valitse lääkäri:</label>
-      <select name="laakari" class="form-control" id="laakari">
-      <option disabled selected hidden>Valitse lääkkeen määrääjä</option>
+      <select name="laakari" class="form-control" required>
+      <option value="" disabled selected hidden>Valitse lääkkeen määrääjä</option>
       {% for laakari in laakarit %}
-        <option value="{{laakari.id}}">{{laakari.sukunimi}} {{laakari.etunimi}}, tunnus: {{laakari.tunnus}}</option>
+        <option required value="{{laakari.id}}">{{laakari.sukunimi}} {{laakari.etunimi}}, tunnus: {{laakari.tunnus}}</option>
 
          {% endfor %}
       </select>
@@ -67,8 +66,8 @@
 <!-- Lääkkeen valinta --> 
     <div class="form-group">
       <label for="sel1">Valitse lääke:</label>
-      <select name="laake" class="form-control" id="laake">
-         <option disabled selected hidden>Valitse reseptille määrätty lääke</option>
+      <select name="laake" class="form-control" required>
+         <option value="" disabled selected hidden>Valitse reseptille määrätty lääke</option>
         {% for laake in laakkeet %}
         <option value="{{laake.id}}">{{laake.tuotenimi}} - {{laake.pakkaus}}</option>
          {% endfor %}
