@@ -15,12 +15,11 @@
       }
     }
 
+// Lisätään $errors muuttujaan kaikki virheilmoitukset taulukkona
     public function errors(){
-      // Lisätään $errors muuttujaan kaikki virheilmoitukset taulukkona
       $errors = array();
 
       foreach($this->validators as $validator){
-        // Kutsu validointimetodia tässä ja lisää sen palauttamat virheet errors-taulukkoon
         $virheet = $this->{$validator}();
         $errors = array_merge($errors, $virheet);
       }
@@ -28,20 +27,27 @@
       return $errors;
     }
 
-    public function validate_string_length($string, $length){
+
+//YLEISET VALIDOINTIMETODIT
+    public function validate_string_length($string, $min_length, $max_length){
       $errors = array();
 
-      if(strlen($string) < $length) {
-            $errors[] = 'Tallennettavan syötteen oltava vähintään ' . $length . ' merkkiä pitkä';
+      if(strlen($string) < $min_length) {
+            $errors[] = 'Tallennettavan syötteen on oltava vähintään ' . $min_length . ' merkkiä pitkä';
+      }
+
+      if(strlen($string) > $max_length) {
+            $errors[] = 'Tallennettavan syötteen on oltava enintään ' . $max_length . ' merkkiä pitkä';
       }
 
       return $errors;
     }
 
+
     public function validate_string_numerics($string){
       $errors = array();
 
-      if(is_numeric($string)) {
+      if(is_int($string)) {
             $errors[] = 'Tallennettava syöte ei voi olla pelkkiä numeroita!';       
       }
 

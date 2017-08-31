@@ -6,7 +6,7 @@ class Ainesosa extends BaseModel {
 
     public function __construct($attributes) {
         parent::__construct($attributes);
-        $this->validators = array('validate_pituus','validate_numerot');
+        $this->validators = array('validoi_pituus','validoi_numerot');
     }
 
 
@@ -57,14 +57,14 @@ class Ainesosa extends BaseModel {
     }
 
 
-    public function update($aine) {
+    public function update() {
         $query = DB::connection()->prepare('UPDATE Ainesosa 
                                             SET aine = :aine 
                                             WHERE id = :id 
                                             RETURNING id');
         $query->execute(array(
-                            'aine' => $aine,
-                            'id' => $this->id));
+                            'aine'  => $this->aine,
+                            'id'    => $this->id));
         $row = $query->fetch();
         $this->id = $row['id'];
     }
@@ -79,14 +79,15 @@ class Ainesosa extends BaseModel {
 
 //VALIDOINTIMETODIT
 
-    public function validate_pituus() {
-        return parent::validate_string_length($this->aine, 5);  
+    public function validoi_pituus() {
+        return parent::validate_string_length($this->aine, 5, 30);  
     }
 
 
-     public function validate_numerot() {
+    public function validoi_numerot() {
         return parent::validate_string_numerics($this->aine);  
     }
+
 
 
 }

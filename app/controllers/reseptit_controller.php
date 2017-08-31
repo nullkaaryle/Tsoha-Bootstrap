@@ -59,8 +59,6 @@ class ReseptitController extends BaseController{
     public static function muokkaa_reseptia($id) {
         $params = $_POST;
 
-        //Kint::dump($params);
-        
         $attributes = array(
             'id' => $id,
             'apteekki' => $params['apteekki'],

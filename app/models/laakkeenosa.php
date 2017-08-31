@@ -77,37 +77,18 @@ class Laakkeenosa extends BaseModel {
         return $laakkeenosat;
     }
 
-//ei toimi vielä
-    // public static function find_by_trade_name($trade_name) {
-    //     $query = DB::connection()->prepare('SELECT * FROM Laakkeenosa 
-    //                                         WHERE laake = :trade_name');
-        
-    //     $query->execute(array(
-    //                         'trade_name' => $trade_name));
-    //     $row = $query->fetch();
-        
-    //      foreach($rows as $row) {
-    //         $laakkeenosat[] = new Laakkeenosa(array(
-    //             'id' => $row['id'],
-    //             'laake' => $row['laake'],
-    //             'ainesosa' => $row['ainesosa'],
-    //             'vahvuus' => $row['vahvuus']
-    //         ));
-    //     }
-    //     return $laakkeenosat;
-    // }
 
-
-
-    public static function find_by_substance_name($substance) {
-        $query = DB::connection()->prepare('SELECT * FROM Laakkeenosa 
-                                            WHERE ainesosa = :substance');
+    public static function find_by_substance_id($substance_id) {
+        $query = DB::connection()->prepare('SELECT * 
+                                            FROM Laakkeenosa 
+                                            WHERE ainesosa = :substance_id');
         
         $query->execute(array(
-                            'substance' => $substance));
-        $row = $query->fetch();
+                            'substance_id' => $substance_id));
+        $rows = $query->fetchAll();
+        $laakkeenosat = array();
         
-         foreach($rows as $row) {
+        foreach($rows as $row) {
             $laakkeenosat[] = new Laakkeenosa(array(
                 'id' => $row['id'],
                 'laake' => $row['laake'],

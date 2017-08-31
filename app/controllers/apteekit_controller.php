@@ -9,11 +9,10 @@ class ApteekitController extends BaseController{
     public static function kirjaudu_sisaan(){
         $params = $_POST;
         $apteekki = Apteekki::authenticate($params['kayttajatunnus'], $params['salasana']);
-            
 
-        if(!$apteekki){
+        if (!$apteekki) {
             View::make('kirjautuminen.html', array('message' => 'Väärä käyttäjätunnus tai salasana!', 'kayttajatunnus' => $params['kayttajatunnus']));
-        }else{
+        } else {
             $_SESSION['apteekki'] = $apteekki->id;
             Redirect::to('/reseptit', array('message' => 'Tervetuloa ' . $apteekki->nimi . '!'));
         }
