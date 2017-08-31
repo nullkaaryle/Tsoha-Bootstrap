@@ -24,7 +24,8 @@ class Resepti extends BaseModel {
                                             INNER JOIN Apteekki ap ON r.apteekki = ap.id
                                             INNER JOIN Potilas po ON r.potilas = po.id
                                             INNER JOIN Laakari li ON r.laakari = li.id
-                                            INNER JOIN Laake le ON r.laake = le.id');
+                                            INNER JOIN Laake le ON r.laake = le.id
+                                            ORDER BY r.id');
 
         $query->execute();
         $rows = $query->fetchAll();

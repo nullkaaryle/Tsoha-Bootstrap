@@ -13,14 +13,5 @@ class LaakkeetController extends BaseController{
         View::make('laake/laake.html', array('laake' => $laake, 'laakkeenosat' => $laakkeenosat));
     }
 
-    public static function nayta_laakkeenlisays(){
-        View::make('laake/laakkeenlisays.html');
-    }
-
-
-//    public static function nayta_laakkeenmuokkaus($id){
-//        $laake = Laake::find($id);
-//        View::make('laake/laakkeenmuokkaus.html', array('laake' => $laake));
-//    }
   
 }

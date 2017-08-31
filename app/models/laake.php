@@ -88,18 +88,4 @@ class Laake extends BaseModel {
     }
      
     
-
-
-    public function save() {
-        $query = DB::connection()->prepare('INSERT INTO Laake (aine) 
-                                            VALUES (:aine) 
-                                            RETURNING id');
-        $query->execute(array(
-                            'aine' => $this->aine));
-        $row = $query->fetch();
-        $this->id = $row['id'];
-    }
-
-    
-    
 }

@@ -59,8 +59,8 @@ class ReseptitController extends BaseController{
     public static function muokkaa_reseptia($id) {
         $params = $_POST;
 
-        Kint::dump($params);
-        /*
+        //Kint::dump($params);
+        
         $attributes = array(
             'id' => $id,
             'apteekki' => $params['apteekki'],
@@ -81,7 +81,7 @@ class ReseptitController extends BaseController{
             $resepti->update();
             Redirect::to('/reseptit/' . $resepti->id, array('message' => 'Reseptiä on muokattu onnistuneesti!'));
         } 
-        */
+        
     }
 
 
