@@ -25,7 +25,8 @@ class Resepti extends BaseModel {
                                             INNER JOIN Potilas po ON r.potilas = po.id
                                             INNER JOIN Laakari li ON r.laakari = li.id
                                             INNER JOIN Laake le ON r.laake = le.id
-                                            ORDER BY r.paivamaara DESC');
+                                            ORDER BY    r.paivamaara DESC, 
+                                                        r.id DESC');
 
         $query->execute();
         $rows = $query->fetchAll();
@@ -51,10 +52,13 @@ class Resepti extends BaseModel {
         $query = DB::connection()->prepare('SELECT r.id, 
                                                     ap.nimi AS apteekki, 
                                                     po.sukunimi AS potilas_sukunimi, 
-                                                    po.etunimi AS potilas_etunimi, 
+                                                    po.etunimi AS potilas_etunimi,
+                                                    po.syntymaaika AS potilas_syntymaaika, 
                                                     li.sukunimi AS laakari_sukunimi, 
-                                                    li.etunimi AS laakari_etunimi, 
-                                                    le.tuotenimi AS laake, 
+                                                    li.etunimi AS laakari_etunimi,
+                                                    li.tunnus AS laakari_tunnus,
+                                                    le.tuotenimi AS laake_tuotenimi,
+                                                    le.pakkaus AS laake_pakkaus,
                                                     r.ohje, 
                                                     r.paivamaara
                                             FROM Resepti r
@@ -70,9 +74,9 @@ class Resepti extends BaseModel {
             $resepti = new Resepti(array(
                 'id'        => $row['id'],
                 'apteekki'  =>  $row['apteekki'],
-                'potilas'   =>  $row['potilas_sukunimi'] . ', ' . $row['potilas_etunimi'],
-                'laakari'   =>  $row['laakari_sukunimi'] . ', ' . $row['laakari_etunimi'],
-                'laake'     =>  $row['laake'],
+                'potilas'   =>  $row['potilas_sukunimi'] . ' ' . $row['potilas_etunimi'] . ', ' . $row['potilas_syntymaaika'],
+                'laakari'   =>  $row['laakari_sukunimi'] . ' ' . $row['laakari_etunimi'] . ' - tunnus: ' . $row['laakari_tunnus'],
+                'laake'     =>  $row['laake_tuotenimi'] . ' - ' . $row['laake_pakkaus'],
                 'ohje'      =>  $row['ohje'],
                 'paivamaara' => $row['paivamaara']
             ));
@@ -180,8 +184,9 @@ class Resepti extends BaseModel {
                             'id' => $this->id));
     }
 
+//VALIDOINTIMETODI
     public function validoi_pituus() {
-        return parent::validoi_merkkijonon_pituus($this->ohje, 3, 100, 'Käyttöohjeen');  
+        return parent::validoi_merkkijonon_pituus($this->ohje, 1, 100, 'Käyttöohjeen');  
     }
 
 

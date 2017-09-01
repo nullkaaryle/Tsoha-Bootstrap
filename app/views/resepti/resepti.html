@@ -1,11 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
 {% import "macros/forms.html" as forms %}
+{% import "macros/go_back.html" as go_back %}
 
-<!-- Linkki yläsivulle -->
+<!-- Linkki yläsivulle --> 
   <p>
-    <a href="{{base_path}}/reseptit" button type="button" class="btn btn-primary btn-xs">Palaa reseptilistaukseen</button></a>
+    {{go_back.go_back_button("#{base_path}/reseptit", 'Palaa reseptilistaukseen')}}
   </p>
+
 
   <!-- Viestit --> 
   {% if message %}
@@ -30,12 +32,12 @@
 
 <!-- Reseptin tiedot listana -->
   <ul>
-    <li><strong>Reseptin numero:  </strong> {{resepti.id}}</li>
-    <li><strong>Apteekki:         </strong> {{resepti.apteekki}}</li>
-    <li><strong>Lääkäri:          </strong> {{resepti.laakari}}</li>
-    <li><strong>Lääkkeen nimi:    </strong> {{resepti.laake}}</li>
-    <li><strong>Kirjoituspäivä:   </strong> {{resepti.paivamaara}}</li>
-    <li><strong>Annostusohje:     </strong> {{resepti.ohje}}</li>
+    <li><strong>Reseptin numero:              </strong> {{resepti.id}}</li>
+    <li><strong>Apteekki:                     </strong> {{resepti.apteekki}}</li>
+    <li><strong>Lääkäri:                      </strong> {{resepti.laakari}}</li>
+    <li><strong>Lääkkeen nimi ja pakkauskoko: </strong> {{resepti.laake}}</li>
+    <li><strong>Kirjoituspäivä:               </strong> {{resepti.paivamaara}}</li>
+    <li><strong>Annostusohje:                 </strong> {{resepti.ohje}}</li>
   </ul>
         
  <!-- Muokkauspainikkeet --> 

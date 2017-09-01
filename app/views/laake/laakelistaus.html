@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
+{% import "macros/go_back.html" as go_back %}
 
 <!-- Linkki yläsivulle --> 
   <p>
-    <a href="{{base_path}}/reseptit" button type="button" class="btn btn-primary btn-xs">Palaa reseptilistaukseen</button></a>
+    {{go_back.go_back_button("#{base_path}/reseptit", 'Palaa reseptilistaukseen')}}
   </p>
 
 <!-- Otsikko ja ohje -->   

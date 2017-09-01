@@ -30,10 +30,6 @@ class ReseptitController extends BaseController{
         $laake = $params['laake'];
         $ohje = $params['ohje'];
 
-        $potilaat = Potilas::hae_kaikki();
-        $laakarit = Laakari::hae_kaikki();
-        $laakkeet = Laake::hae_kaikki();
-
         $resepti = new Resepti(array(
             'apteekki' => $apteekki,
             'potilas' => $potilas,
@@ -42,11 +38,16 @@ class ReseptitController extends BaseController{
             'ohje' => $ohje
         )); 
 
+        $potilaat = Potilas::hae_kaikki();
+        $laakarit = Laakari::hae_kaikki();
+        $laakkeet = Laake::hae_kaikki();
+
         $errors = $resepti->errors();
 
         if (count($errors) == 0) {
             $resepti -> tallenna();
             Redirect::to('/reseptit/' . $resepti->id, array('message' => 'Uusi resepti tallennettu!'));
+        
         } else {
             View::make('resepti/reseptinlisays.html', array('errors' => $errors, 'resepti' => $resepti, 'potilaat' => $potilaat, 'laakarit' => $laakarit, 'laakkeet' => $laakkeet));
         }
@@ -83,6 +84,7 @@ class ReseptitController extends BaseController{
 
         if (count($errors) > 0) {
             View::make('resepti/reseptinmuokkaus.html', array('errors' => $errors, 'attributes' => $attributes));
+        
         } else {
             $resepti->paivita();
             Redirect::to('/reseptit/' . $resepti->id, array('message' => 'Reseptiä on muokattu onnistuneesti!'));

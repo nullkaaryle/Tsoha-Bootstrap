@@ -1,10 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
+{% import "macros/go_back.html" as go_back %}
 
 <!-- Linkki yläsivulle --> 
   <p>
-    <a href="{{base_path}}/ainesosat" button type="button" class="btn btn-primary btn-xs">Palaa ainesosalistaukseen</button></a>
+    {{go_back.go_back_button("#{base_path}/ainesosat", 'Palaa ainesosalistaukseen')}}
   </p>
+
 
 <!-- Otsikko --> 
   <h1>Lisää uusi ainesosa</h1>

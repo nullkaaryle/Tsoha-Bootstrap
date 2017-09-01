@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
+{% import "macros/go_back.html" as go_back %}
 
 <!-- Linkki yläsivulle --> 
   <p>
-    <a href="{{base_path}}/reseptit" button type="button" class="btn btn-primary btn-xs">Palaa reseptilistaukseen</button></a>
+    {{go_back.go_back_button("#{base_path}/reseptit", 'Palaa reseptilistaukseen')}}
   </p>
 
 <!-- Otsikko --> 
@@ -23,10 +24,10 @@
   {% endif %}   
 
 <!-- Lisäyslomake --> 
-  <form method="post" action="{{base_path}}/reseptit">
+  <form name="lisayslomake" method="post" action="{{base_path}}/reseptit">
 
    
- <!-- Apteekki on valittu automaattisesti, näytetään nimi, mutta lähetetään id   --> 
+ <!-- Apteekki on valittu automaattisesti, näytetään nimi, mutta lähetetään id  --> 
     <div class="form-group">
       <label>Apteekki</label>
       <input type="text" 
@@ -38,14 +39,14 @@
             class="form-control" 
             value="{{user_logged_in.id}}">
     </div>
-    
+   
 
-<!-- Potilaan valinta --> 
+<!-- Potilaan valinta -->
     <div class="form-group">
       <label for="sel1">Valitse potilas:</label>
         <select name="potilas" class="form-control" required>
       
-          <option value="" disabled selected hidden>Valitse potilas</option>
+          <option value="" disabled selected hidden>Valitse potilas, jolle resepti on määrätty</option>
         
           {% for potilas in potilaat %}
           <option required value="{{potilas.id}}">{{potilas.sukunimi}} {{potilas.etunimi}}, {{potilas.syntymaaika}}</option>
@@ -53,6 +54,7 @@
 
         </select>
     </div>
+ 
 
 <!-- Lääkärin valinta --> 
     <div class="form-group">
@@ -68,6 +70,7 @@
       </select>
     </div>
 
+
 <!-- Lääkkeen valinta --> 
     <div class="form-group">
       <label for="sel1">Valitse lääke:</label>
@@ -82,11 +85,13 @@
       </select>
     </div>
 
+
 <!-- Annosteluohjeen syöttäminen --> 
     <div class="form-group">
       <label>Käyttöohje</label>
-      <input type="text" name="ohje" class="form-control" placeholder="Kirjoita tähän annosteluohje">
+      <input type="text" name="ohje" required class="form-control" placeholder="Kirjoita tähän annosteluohje">
     </div>
+
 
 <!-- Lisäyspainike --> 
     <div class="form-group">
@@ -94,7 +99,6 @@
     </div>
 
   </form>
-
 
 
 {% endblock %}
