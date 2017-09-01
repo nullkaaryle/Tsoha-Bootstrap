@@ -12,9 +12,6 @@
         EtusivuController::nayta_etusivu();
     });
 
-    $routes->get('/hiekkalaatikko', function() {
-        HelloWorldController::sandbox();
-    });
 
 // KIRJAUTUMINEN
 
@@ -68,7 +65,6 @@
         AinesosatController::nayta_ainesosalistaus();
     });
 
-    //create
     $routes->get('/ainesosat/uusi', 'check_logged_in', function() {
         AinesosatController::nayta_ainesosanlisays();
     });
@@ -76,8 +72,7 @@
     $routes->get('/ainesosat/:id', 'check_logged_in', function($id) {
         AinesosatController::nayta_ainesosa($id);
     });
-
-    //store
+   
     $routes->post('/ainesosat/', 'check_logged_in', function() {
         AinesosatController::tallenna_ainesosa();
     });
@@ -95,41 +90,18 @@
     });
 
 
-
-
 // LÄÄKKEET  
 
     $routes->get('/laakkeet', 'check_logged_in', function() {
         LaakkeetController::nayta_laakelistaus();
     });
 
-     $routes->get('/laakkeet/uusi', 'check_logged_in', function() {
-        LaakkeetController::nayta_laakkeenlisays();
-    });
-
     $routes->get('/laakkeet/:id', 'check_logged_in', function($id) {
         LaakkeetController::nayta_laake($id);
     });
     
-    $routes->post('/laakkeet/', 'check_logged_in', function() {
-        LaakkeetController::tallenna_laake();
-    });
-
-    $routes->get('/laakkeet/:id/muokkaa', 'check_logged_in', function($id) {
-        LaakkeetController::nayta_laakkeenmuokkaus($id);
-    });
-
-    $routes->post('/laakkeet/:id/muokkaa', 'check_logged_in', function($id) {
-        LaakkeetController::muokkaa_laaketta($id);
-    });
-
-    $routes->post('/laakkeet/:id/poista', 'check_logged_in', function($id) {
-        LaakkeetController::poista_laake($id);
-    });
 
 
-
-// MUUT
 
     
    

@@ -26,13 +26,12 @@
   {% endif %}  
 
 <!-- Otsikko -->
-  <h2>Resepti {{resepti.id}}</h2>
+  <h3>Resepti potilaalle: {{resepti.potilas}}</h3>
 
 <!-- Reseptin tiedot listana -->
   <ul>
     <li><strong>Reseptin numero:  </strong> {{resepti.id}}</li>
     <li><strong>Apteekki:         </strong> {{resepti.apteekki}}</li>
-    <li><strong>Potilas:          </strong> {{resepti.potilas}}</li>
     <li><strong>Lääkäri:          </strong> {{resepti.laakari}}</li>
     <li><strong>Lääkkeen nimi:    </strong> {{resepti.laake}}</li>
     <li><strong>Kirjoituspäivä:   </strong> {{resepti.paivamaara}}</li>

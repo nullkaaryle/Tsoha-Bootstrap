@@ -12,6 +12,7 @@ class ReseptitController extends BaseController{
         View::make('resepti/resepti.html', array('resepti' => $resepti));
     }
 
+
     public static function nayta_reseptinlisays(){
         $potilaat = Potilas::all();
         $laakarit = Laakari::all();
@@ -52,6 +53,7 @@ class ReseptitController extends BaseController{
         
     }
 
+
     public static function nayta_reseptinmuokkaus($id){
         $resepti_idt = Resepti::find_ids($id);
         $resepti = Resepti::find($id);
@@ -60,6 +62,7 @@ class ReseptitController extends BaseController{
         $laakkeet = Laake::all();
         View::make('resepti/reseptinmuokkaus.html', array('resepti_idt' => $resepti_idt, 'resepti' => $resepti, 'potilaat' => $potilaat, 'laakarit' => $laakarit, 'laakkeet' => $laakkeet));
     }
+
 
     public static function muokkaa_reseptia($id) {
         $params = $_POST;
