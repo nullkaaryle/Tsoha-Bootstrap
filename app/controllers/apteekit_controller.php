@@ -42,4 +42,5 @@ class ApteekitController extends BaseController{
         $_SESSION['apteekki'] = null;
         Redirect::to('/etusivu', array('message' => 'Olet kirjautunut ulos.'));
     }
+
 }

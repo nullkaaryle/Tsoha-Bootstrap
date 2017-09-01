@@ -10,7 +10,7 @@ class Ainesosa extends BaseModel {
     }
 
 
-    public static function all() {
+    public static function hae_kaikki() {
         $query = DB::connection()->prepare('SELECT * 
                                             FROM Ainesosa
                                             ORDER BY id');
@@ -28,7 +28,7 @@ class Ainesosa extends BaseModel {
     }
 
 
-    public static function find($id) {
+    public static function hae($id) {
         $query = DB::connection()->prepare('SELECT * FROM Ainesosa 
                                             WHERE id = :id 
                                             LIMIT 1');
@@ -46,7 +46,7 @@ class Ainesosa extends BaseModel {
     }
 
 
-    public function save() {
+    public function tallenna() {
         $query = DB::connection()->prepare('INSERT INTO Ainesosa (aine) 
                                             VALUES (:aine) 
                                             RETURNING id');
@@ -57,7 +57,7 @@ class Ainesosa extends BaseModel {
     }
 
 
-    public function update() {
+    public function paivita() {
         $query = DB::connection()->prepare('UPDATE Ainesosa 
                                             SET aine = :aine 
                                             WHERE id = :id 
@@ -70,7 +70,7 @@ class Ainesosa extends BaseModel {
     }
 
 
-    public function destroy() {
+    public function poista() {
         $query = DB::connection()->prepare('DELETE FROM Ainesosa 
                                             WHERE id = :id');
         $query->execute(array(

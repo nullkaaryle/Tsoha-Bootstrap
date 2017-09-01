@@ -37,7 +37,7 @@ class Apteekki extends BaseModel {
     }
 
 
-    public static function find($id) {
+    public static function hae($id) {
         $query = DB::connection()->prepare('SELECT * 
                                             FROM Apteekki 
                                             WHERE id = :id 
@@ -60,12 +60,14 @@ class Apteekki extends BaseModel {
     }
 
 
+//VALIDOINTIMETODIT
+
     public function validoi_kayttajatunnus() {
-        return parent::validoi_merkkijonon_pituus($this->kayttajatunnus, 5, 30, 'Käyttäjätunnuksen');
+        return parent::validoi_merkkijonon_pituus($this->kayttajatunnus, 3, 30, 'Käyttäjätunnuksen');
     }
 
     public function validoi_salasana() {
-        return parent::validoi_merkkijonon_pituus($this->salasana, 5, 30, 'Salasanan'); 
+        return parent::validoi_merkkijonon_pituus($this->salasana, 3, 30, 'Salasanan'); 
 
     }
 

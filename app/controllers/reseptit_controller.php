@@ -3,20 +3,20 @@
 class ReseptitController extends BaseController{
 
     public static function nayta_reseptilistaus(){
-        $reseptit = Resepti::all();
+        $reseptit = Resepti::hae_kaikki();
         View::make('resepti/reseptilistaus.html', array('reseptit' => $reseptit));
     }
 
     public static function nayta_resepti($id){
-        $resepti = Resepti::find($id);
+        $resepti = Resepti::hae($id);
         View::make('resepti/resepti.html', array('resepti' => $resepti));
     }
 
 
     public static function nayta_reseptinlisays(){
-        $potilaat = Potilas::all();
-        $laakarit = Laakari::all();
-        $laakkeet = Laake::all();
+        $potilaat = Potilas::hae_kaikki();
+        $laakarit = Laakari::hae_kaikki();
+        $laakkeet = Laake::hae_kaikki();
         View::make('resepti/reseptinlisays.html', array('potilaat' => $potilaat, 'laakarit' => $laakarit, 'laakkeet' => $laakkeet));
     }
 
@@ -30,9 +30,9 @@ class ReseptitController extends BaseController{
         $laake = $params['laake'];
         $ohje = $params['ohje'];
 
-        $potilaat = Potilas::all();
-        $laakarit = Laakari::all();
-        $laakkeet = Laake::all();
+        $potilaat = Potilas::hae_kaikki();
+        $laakarit = Laakari::hae_kaikki();
+        $laakkeet = Laake::hae_kaikki();
 
         $resepti = new Resepti(array(
             'apteekki' => $apteekki,
@@ -45,7 +45,7 @@ class ReseptitController extends BaseController{
         $errors = $resepti->errors();
 
         if (count($errors) == 0) {
-            $resepti -> save();
+            $resepti -> tallenna();
             Redirect::to('/reseptit/' . $resepti->id, array('message' => 'Uusi resepti tallennettu!'));
         } else {
             View::make('resepti/reseptinlisays.html', array('errors' => $errors, 'resepti' => $resepti, 'potilaat' => $potilaat, 'laakarit' => $laakarit, 'laakkeet' => $laakkeet));
@@ -55,11 +55,11 @@ class ReseptitController extends BaseController{
 
 
     public static function nayta_reseptinmuokkaus($id){
-        $resepti_idt = Resepti::find_ids($id);
-        $resepti = Resepti::find($id);
-        $potilaat = Potilas::all();
-        $laakarit = Laakari::all();
-        $laakkeet = Laake::all();
+        $resepti_idt = Resepti::hae_idt($id);
+        $resepti = Resepti::hae($id);
+        $potilaat = Potilas::hae_kaikki();
+        $laakarit = Laakari::hae_kaikki();
+        $laakkeet = Laake::hae_kaikki();
         View::make('resepti/reseptinmuokkaus.html', array('resepti_idt' => $resepti_idt, 'resepti' => $resepti, 'potilaat' => $potilaat, 'laakarit' => $laakarit, 'laakkeet' => $laakkeet));
     }
 
@@ -84,7 +84,7 @@ class ReseptitController extends BaseController{
         if (count($errors) > 0) {
             View::make('resepti/reseptinmuokkaus.html', array('errors' => $errors, 'attributes' => $attributes));
         } else {
-            $resepti->update();
+            $resepti->paivita();
             Redirect::to('/reseptit/' . $resepti->id, array('message' => 'Reseptiä on muokattu onnistuneesti!'));
         } 
         
@@ -94,7 +94,7 @@ class ReseptitController extends BaseController{
     public static function poista_resepti($id){
         $resepti = new Resepti(array(
             'id' => $id));
-        $resepti->destroy();
+        $resepti->poista();
         Redirect::to('/reseptit', array('message' => 'Resepti on poistettu onnistuneesti!'));
     }
 

@@ -7,7 +7,7 @@
      
       if (isset($_SESSION['apteekki'])) {
         $apteekki_id = $_SESSION['apteekki'];
-        $apteekki = Apteekki::find($apteekki_id);
+        $apteekki = Apteekki::hae($apteekki_id);
 
         return $apteekki;
       }

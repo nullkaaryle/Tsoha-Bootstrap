@@ -2,11 +2,6 @@
 
 class EtusivuController extends BaseController{
 
-    public static function sandbox(){
-      // Testaa koodiasi täällä
-      // echo 'Hello World!';
-      //View::make('helloworld.html');
-    }
 
     public static function index(){
       Redirect::to('/etusivu');

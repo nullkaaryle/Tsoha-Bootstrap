@@ -10,7 +10,7 @@ class Resepti extends BaseModel {
     }
 
 
-    public static function all() {
+    public static function hae_kaikki() {
         $query = DB::connection()->prepare('SELECT r.id, 
                                                     ap.nimi AS apteekki, 
                                                     po.sukunimi AS potilas_sukunimi, 
@@ -47,7 +47,7 @@ class Resepti extends BaseModel {
     }
 
 
-    public static function find($id) {
+    public static function hae($id) {
         $query = DB::connection()->prepare('SELECT r.id, 
                                                     ap.nimi AS apteekki, 
                                                     po.sukunimi AS potilas_sukunimi, 
@@ -84,7 +84,7 @@ class Resepti extends BaseModel {
     }
 
 
-    public static function find_ids($id) {
+    public static function hae_idt($id) {
         $query = DB::connection()->prepare('SELECT r.id, 
                                                     ap.id AS apteekki, 
                                                     po.id AS potilas,
@@ -119,9 +119,7 @@ class Resepti extends BaseModel {
     }
 
 
-
-
-    public function save() {
+    public function tallenna() {
         $paivamaara = date("Y-m-d"); 
         $query = DB::connection()->prepare('INSERT INTO Resepti (
                                                             apteekki, 
@@ -153,7 +151,7 @@ class Resepti extends BaseModel {
     }
 
 
-    public function update() {
+    public function paivita() {
         $query = DB::connection()->prepare('UPDATE Resepti 
                                             SET potilas = :potilas,
                                                 laakari = :laakari,
@@ -175,7 +173,7 @@ class Resepti extends BaseModel {
 
 
 
-    public function destroy() {
+    public function poista() {
         $query = DB::connection()->prepare('DELETE FROM Resepti 
                                             WHERE id = :id');
         $query->execute(array(

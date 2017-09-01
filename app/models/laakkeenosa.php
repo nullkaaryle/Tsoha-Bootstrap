@@ -9,7 +9,7 @@ class Laakkeenosa extends BaseModel {
     }
 
 
-    public static function all() {
+    public static function hae_kaikki() {
         $query = DB::connection()->prepare('SELECT * FROM Laakkeenosa');
         $query->execute();
         $rows = $query->fetchAll();
@@ -27,7 +27,7 @@ class Laakkeenosa extends BaseModel {
     }
 
 
-    public static function find($id) {
+    public static function hae($id) {
         $query = DB::connection()->prepare('SELECT * FROM Laakkeenosa 
                                             WHERE id = :id 
                                             LIMIT 1');
@@ -50,7 +50,7 @@ class Laakkeenosa extends BaseModel {
     }
 
 
-    public static function find_by_product_id($product_id) {
+    public static function hae_laakkeen_idlla($laake_id) {
 
         $query = DB::connection()->prepare('SELECT  lo.id,
                                                     lo.laake,
@@ -58,10 +58,10 @@ class Laakkeenosa extends BaseModel {
                                                     lo.vahvuus
                                             FROM Laakkeenosa lo
                                             INNER JOIN Ainesosa ao ON lo.ainesosa = ao.id
-                                            WHERE lo.laake = :product_id');
+                                            WHERE lo.laake = :laake_id');
         
         $query->execute(array(
-                            'product_id' => $product_id));
+                            'laake_id' => $laake_id));
         
         $rows = $query->fetchAll();
         $laakkeenosat = array();
@@ -78,13 +78,13 @@ class Laakkeenosa extends BaseModel {
     }
 
 
-    public static function find_by_substance_id($substance_id) {
+    public static function hae_ainesosan_idlla($ainesosa_id) {
         $query = DB::connection()->prepare('SELECT * 
                                             FROM Laakkeenosa 
-                                            WHERE ainesosa = :substance_id');
+                                            WHERE ainesosa = :ainesosa_id');
         
         $query->execute(array(
-                            'substance_id' => $substance_id));
+                            'ainesosa_id' => $ainesosa_id));
         $rows = $query->fetchAll();
         $laakkeenosat = array();
         

@@ -9,7 +9,7 @@ class Potilas extends BaseModel {
     }
 
 
-    public static function all() {
+    public static function hae_kaikki() {
         $query = DB::connection()->prepare('SELECT * 
                                             FROM Potilas
                                             ORDER BY sukunimi');

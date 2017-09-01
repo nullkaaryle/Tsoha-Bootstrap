@@ -8,7 +8,7 @@ class Laake extends BaseModel {
         parent::__construct($attributes);
     }
 
-    public static function all() {
+    public static function hae_kaikki() {
         $query = DB::connection()->prepare('SELECT * FROM Laake');
         $query->execute();
         $rows = $query->fetchAll();
@@ -29,7 +29,7 @@ class Laake extends BaseModel {
    
 
 
-    public static function find($id) {
+    public static function hae($id) {
         $query = DB::connection()->prepare('SELECT  la.id,
                                                     la.tuotenimi,
                                                     la.pakkaus,
@@ -61,7 +61,7 @@ class Laake extends BaseModel {
     }
 
 
-    public static function find_laakkeenosat($id) {
+    public static function hae_laakkeenosat($id) {
        
         $query = DB::connection()->prepare('SELECT  la.id,
                                                     ao.aine AS ainesosa,
