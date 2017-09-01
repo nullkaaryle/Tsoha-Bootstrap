@@ -43,34 +43,42 @@
 <!-- Potilaan valinta --> 
     <div class="form-group">
       <label for="sel1">Valitse potilas:</label>
-      <select name="potilas" class="form-control" required>
-      <option value="" disabled selected hidden>Valitse potilas</option>
-      {% for potilas in potilaat %}
-        <option value=""value="{{potilas.id}}">{{potilas.sukunimi}} {{potilas.etunimi}}, {{potilas.syntymaaika}}</option>
-      {% endfor %}
-      </select>
+        <select name="potilas" class="form-control" required>
+      
+          <option value="" disabled selected hidden>Valitse potilas</option>
+        
+          {% for potilas in potilaat %}
+          <option required value="{{potilas.id}}">{{potilas.sukunimi}} {{potilas.etunimi}}, {{potilas.syntymaaika}}</option>
+          {% endfor %}
+
+        </select>
     </div>
 
 <!-- Lääkärin valinta --> 
-     <div class="form-group">
+    <div class="form-group">
       <label for="sel1">Valitse lääkäri:</label>
-      <select name="laakari" class="form-control" required>
-      <option value="" disabled selected hidden>Valitse lääkkeen määrääjä</option>
-      {% for laakari in laakarit %}
-        <option required value="{{laakari.id}}">{{laakari.sukunimi}} {{laakari.etunimi}}, tunnus: {{laakari.tunnus}}</option>
+        <select name="laakari" class="form-control" required>
+      
+          <option value="" disabled selected hidden>Valitse lääkkeen määrääjä</option>
+      
+          {% for laakari in laakarit %}
+          <option required value="{{laakari.id}}">{{laakari.sukunimi}} {{laakari.etunimi}}, tunnus: {{laakari.tunnus}}</option>
+          {% endfor %}
 
-         {% endfor %}
       </select>
     </div>
 
 <!-- Lääkkeen valinta --> 
     <div class="form-group">
       <label for="sel1">Valitse lääke:</label>
-      <select name="laake" class="form-control" required>
-         <option value="" disabled selected hidden>Valitse reseptille määrätty lääke</option>
-        {% for laake in laakkeet %}
-        <option value="{{laake.id}}">{{laake.tuotenimi}} - {{laake.pakkaus}}</option>
-         {% endfor %}
+        <select name="laake" class="form-control" required>
+          
+          <option value="" disabled selected hidden>Valitse reseptille määrätty lääke</option>
+        
+          {% for laake in laakkeet %}
+          <option required value="{{laake.id}}">{{laake.tuotenimi}} - {{laake.pakkaus}}</option>
+          {% endfor %}
+
       </select>
     </div>
 

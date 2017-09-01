@@ -183,7 +183,7 @@ class Resepti extends BaseModel {
     }
 
     public function validoi_pituus() {
-        return parent::validate_string_length($this->ohje, 3, 100);  
+        return parent::validoi_merkkijonon_pituus($this->ohje, 3, 100, 'Käyttöohjeen');  
     }
 
 

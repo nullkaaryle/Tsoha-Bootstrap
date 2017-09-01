@@ -29,7 +29,8 @@
 
 
 //YLEISET VALIDOINTIMETODIT
-    public function validate_string_length($string, $min_length, $max_length){
+/*    
+    public function validate_string_length($string, $min_length, $max_length) {
       $errors = array();
 
       if(strlen($string) < $min_length) {
@@ -41,6 +42,21 @@
       }
 
       return $errors;
+    }
+*/
+    
+    public function validoi_merkkijonon_pituus($merkkijono, $min_pituus, $max_pituus, $kohde){
+      $virheet = array();
+
+      if (strlen($merkkijono) < $min_pituus) {
+            $virheet[] = $kohde . ' on oltava vähintään ' . $min_pituus . ' merkkiä pitkä.';
+      }
+
+      if (strlen($merkkijono) > $max_pituus) {
+            $virheet[] = $kohde . ' on oltava enintään ' . $max_pituus . ' merkkiä pitkä.';
+      }
+
+      return $virheet;
     }
 
 

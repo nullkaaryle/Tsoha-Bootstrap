@@ -29,6 +29,10 @@ class ReseptitController extends BaseController{
         $laake = $params['laake'];
         $ohje = $params['ohje'];
 
+        $potilaat = Potilas::all();
+        $laakarit = Laakari::all();
+        $laakkeet = Laake::all();
+
         $resepti = new Resepti(array(
             'apteekki' => $apteekki,
             'potilas' => $potilas,
@@ -43,8 +47,9 @@ class ReseptitController extends BaseController{
             $resepti -> save();
             Redirect::to('/reseptit/' . $resepti->id, array('message' => 'Uusi resepti tallennettu!'));
         } else {
-            View::make('resepti/reseptinlisays.html', array('errors' => $errors, 'resepti' => $resepti));
+            View::make('resepti/reseptinlisays.html', array('errors' => $errors, 'resepti' => $resepti, 'potilaat' => $potilaat, 'laakarit' => $laakarit, 'laakkeet' => $laakkeet));
         }
+        
     }
 
     public static function nayta_reseptinmuokkaus($id){

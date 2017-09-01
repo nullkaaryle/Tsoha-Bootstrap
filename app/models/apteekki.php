@@ -6,6 +6,7 @@ class Apteekki extends BaseModel {
 
     public function __construct($attributes){
         parent::__construct($attributes);
+        $this->validators = array('validoi_kayttajatunnus', 'validoi_salasana');
     }
 
 
@@ -17,7 +18,7 @@ class Apteekki extends BaseModel {
                                             LIMIT 1');
         $query->execute(array(
                             'kayttajatunnus' => $kayttajatunnus,
-                            'salasana' => $salasana));
+                            'salasana'       => $salasana));
         
         $row = $query->fetch();
 
@@ -37,7 +38,8 @@ class Apteekki extends BaseModel {
 
 
     public static function find($id) {
-        $query = DB::connection()->prepare('SELECT * FROM Apteekki 
+        $query = DB::connection()->prepare('SELECT * 
+                                            FROM Apteekki 
                                             WHERE id = :id 
                                             LIMIT 1');
         $query->execute(array(
@@ -56,6 +58,18 @@ class Apteekki extends BaseModel {
 
         return null;
     }
+
+
+    public function validoi_kayttajatunnus() {
+        return parent::validoi_merkkijonon_pituus($this->kayttajatunnus, 5, 30, 'Käyttäjätunnuksen');
+    }
+
+    public function validoi_salasana() {
+        return parent::validoi_merkkijonon_pituus($this->salasana, 5, 30, 'Salasanan'); 
+
+    }
+
+    
 
 
 }
