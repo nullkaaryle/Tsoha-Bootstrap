@@ -1,12 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
-{% import "macros/forms.html" as forms %}
-{% import "macros/go_back.html" as go_back %}
+{% import "macros/buttons.html" as buttons %}
 
 <!-- Linkki yläsivulle --> 
-
   <p>
-    {{go_back.go_back_button("#{base_path}/ainesosat", 'Palaa ainesosalistaukseen')}}
+    {{buttons.go_back_button("#{base_path}/ainesosat", 'Palaa ainesosalistaukseen')}}
   </p>
 
 <!-- Viestit --> 
@@ -31,13 +29,14 @@
   <h3>Tarkasteltava ainesosa:</h3>
   <h2>{{ainesosa.aine}}</h2>
  
-<!-- Muokkauspainikkeet --> 
+<!-- Muokkauspainikkeet--> 
+
   <td> 
-    <a href="{{base_path}}/ainesosat/{{ainesosa.id}}/muokkaa" class="btn btn-warning">Muokkaa</button></a>
+    {{buttons.modify_button("#{base_path}/ainesosat/#{ainesosa.id}/muokkaa")}}
   </td>
 
   <td> 
-    {{forms.destroy_button("#{base_path}/ainesosat/#{ainesosa.id}/poista")}}
+    {{buttons.destroy_button("#{base_path}/ainesosat/#{ainesosa.id}/poista")}}
   </td>
 
 {% endblock %}

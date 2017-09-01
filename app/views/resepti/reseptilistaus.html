@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+{% import "macros/buttons.html" as buttons %}
   
  <!-- Otsikko --> 
   <h1>Reseptilistaus</h1>
@@ -30,7 +31,7 @@
     <tbody>
       {% for resepti in reseptit %}
         <tr>
-          <td><a href="{{base_path}}/reseptit/{{resepti.id}}" button type="button" class="btn btn-info">{{resepti.id}}</button></a></td>
+          <td>{{buttons.info_button("#{base_path}/reseptit/#{resepti.id}", "#{resepti.id}")}}</td>
           <td>{{resepti.apteekki}}</td>
           <td>{{resepti.potilas}}</td>
           <td>{{resepti.laakari}}</td>
@@ -43,8 +44,8 @@
   </table>
 
 <!-- Lisäyspainike --> 
-  <p>
-    <a href="/tsoha2017/reseptit/uusi" class="btn btn-success">Lisää uusi resepti</a>
-  </p>
+  <td> 
+    {{buttons.add_new_button("#{base_path}/reseptit/uusi", 'Lisää uusi resepti')}}
+  </td>
 
 {% endblock %}

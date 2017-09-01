@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
-{% import "macros/go_back.html" as go_back %}
+{% import "macros/buttons.html" as buttons %}
 
 <!-- Linkki yläsivulle --> 
   <p>
-    {{go_back.go_back_button("#{base_path}/reseptit", 'Palaa reseptilistaukseen')}}
+    {{buttons.go_back_button("#{base_path}/reseptit", 'Palaa reseptilistaukseen')}}
   </p>
 
 
@@ -43,16 +43,16 @@
       {% for ainesosa in ainesosat %}
         <tr>
           <td>{{ainesosa.id}}</td>
-          <td><a href="{{base_path}}/ainesosat/{{ainesosa.id}}" button type="button" class="btn btn-info">{{ainesosa.aine}}</button></a></td>
+          <td>{{buttons.info_button("#{base_path}/ainesosat/#{ainesosa.id}", "#{ainesosa.aine}")}}</td>
         <tr>  
       {% endfor %}
     </tbody>
 
   </table>
 
-<!-- Muokkauspainikkeet --> 
-  <p>
-    <a href="{{base_path}}/ainesosat/uusi" class="btn btn-success">Lisää uusi ainesosa</a>
-  </p>
+
+  <td> 
+    {{buttons.add_new_button("#{base_path}/ainesosat/uusi", 'Lisää uusi ainesosa')}}
+  </td>
 
 {% endblock %}

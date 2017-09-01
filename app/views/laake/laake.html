@@ -1,10 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
+{% import "macros/buttons.html" as buttons %}
 
-<!-- Linkki yläsivulle -->
+<!-- Linkki yläsivulle --> 
   <p>
-      <a href="{{base_path}}/laakkeet" button type="button" class="btn btn-primary btn-xs">Palaa lääkelistaukseen</button></a>
+    {{buttons.go_back_button("#{base_path}/laakkeet", 'Palaa lääkelistaukseen')}}
   </p>
+
 
 <!-- Otsikko -->
   <h2>{{laake.tuotenimi}}</h2>

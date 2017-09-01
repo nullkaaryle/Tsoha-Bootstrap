@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
-{% import "macros/go_back.html" as go_back %}
+{% import "macros/buttons.html" as buttons %}
 
 <!-- Linkki yläsivulle --> 
   <p>
-    {{go_back.go_back_button("#{base_path}/reseptit", 'Palaa reseptilistaukseen')}}
+    {{buttons.go_back_button("#{base_path}/reseptit", 'Palaa reseptilistaukseen')}}
   </p>
 
   
@@ -104,7 +104,7 @@
 
 <!-- Tallennuspainike --> 
     <div class="form-group">
-      <button type="submit" class="btn btn-primary">Tallenna muutos</button>
+      {{buttons.save_button("#{base_path}/ainesosat/#{resepti.id}/muokkaa", "Tallenna muutos")}}
     </div>
 
   </form>

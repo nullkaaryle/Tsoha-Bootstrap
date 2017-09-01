@@ -1,11 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
-{% import "macros/forms.html" as forms %}
-{% import "macros/go_back.html" as go_back %}
+{% import "macros/buttons.html" as buttons %}
 
 <!-- Linkki yläsivulle --> 
   <p>
-    {{go_back.go_back_button("#{base_path}/reseptit", 'Palaa reseptilistaukseen')}}
+    {{buttons.go_back_button("#{base_path}/reseptit", 'Palaa reseptilistaukseen')}}
   </p>
 
 
@@ -45,11 +44,11 @@
   <tr>
 
     <td> 
-      <a href="{{base_path}}/reseptit/{{resepti.id}}/muokkaa" class="btn btn-warning">Muokkaa</button></a>
+      {{buttons.modify_button("#{base_path}/reseptit/#{resepti.id}/muokkaa")}}
     </td>
 
     <td> 
-      {{forms.destroy_button("#{base_path}/reseptit/#{resepti.id}/poista")}}
+      {{buttons.destroy_button("#{base_path}/reseptit/#{resepti.id}/poista")}}
     </td>
   
   </tr>

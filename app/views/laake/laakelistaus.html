@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
-{% import "macros/go_back.html" as go_back %}
+{% import "macros/buttons.html" as buttons %}
 
 <!-- Linkki yläsivulle --> 
   <p>
-    {{go_back.go_back_button("#{base_path}/reseptit", 'Palaa reseptilistaukseen')}}
+    {{buttons.go_back_button("#{base_path}/reseptit", 'Palaa reseptilistaukseen')}}
   </p>
 
 <!-- Otsikko ja ohje -->   
@@ -26,7 +26,7 @@
       {% for laake in laakkeet %}
         <tr>
           <td>{{laake.id}}</td>
-          <td><a href="{{base_path}}/laakkeet/{{laake.id}}" button type="button" class="btn btn-info">{{laake.tuotenimi}}</button></a></td>
+          <td>{{buttons.info_button("#{base_path}/laakkeet/#{laake.id}", "#{laake.tuotenimi}")}}</td>
           <td>{{laake.pakkaus}}</td>
         </tr>
       {% endfor %}

@@ -1,0 +1,96 @@
+<!--POISTAMINEN-->
+{% macro destroy_button(action, text) %}
+    
+    <form   
+        method="post" 
+        action="{{action}}"
+        style="display: inline-block;">
+
+        <button    
+            type="submit" 
+            class="btn btn-danger"> 
+            {{text|default('Poista')}}
+        </button>
+
+{% endmacro %}
+
+
+<!--UUDEN TALLENTAMINEN TAI MUOKKAUKSEN TALLENTAMINEN-->
+{% macro save_button(action, text) %}
+    
+    <form   
+        method="post" 
+        action="{{action}}"
+        style="display: inline-block;">
+
+        <button    
+            type="submit" 
+            class="btn btn-success"> 
+            {{text|default('Tallenna')}}
+        </button>
+
+{% endmacro %}
+
+<!--LINKKI TAKAISINPÄIN-->
+{% macro go_back_button(action, text) %}
+    
+    <a 
+        href="{{action}}"
+        style="display: inline-block;">
+
+        <button    
+            type="button" 
+            class="btn btn-primary btn-xs"> 
+            {{text|default('Palaa')}}
+        </button>
+    </a> 
+
+{% endmacro %}
+
+<!--LINKKI MUOKKAUKSEEN-->
+{% macro modify_button(action, text) %}
+    
+    <a 
+        href="{{action}}"
+        style="display: inline-block;">
+
+        <button    
+            type="button" 
+            class="btn btn-warning"> 
+            {{text|default('Muokkaa')}}
+        </button>
+    </a> 
+
+{% endmacro %}
+
+<!--LINKKI UUDEN LISÄYSSIVULLE-->
+{% macro add_new_button(action, text) %}
+    
+    <a 
+        href="{{action}}"
+        style="display: inline-block;">
+
+        <button    
+            type="button" 
+            class="btn btn-success"> 
+            {{text|default('Lisää')}}
+        </button>
+    </a> 
+
+{% endmacro %}
+
+<!--LINKKI LISÄTIETOON-->
+{% macro info_button(action, text) %}
+    
+    <a 
+        href="{{action}}"
+        style="display: inline-block;">
+
+        <button    
+            type="button" 
+            class="btn btn-info"> 
+            {{text|default('Info')}}
+        </button>
+    </a> 
+
+{% endmacro %}
