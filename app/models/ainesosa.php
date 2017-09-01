@@ -21,9 +21,9 @@ class Ainesosa extends BaseModel {
         foreach($rows as $row) {
             $ainesosat[] = new Ainesosa(array(
                 'id' => $row['id'],
-                'aine' => $row['aine']
-            ));
+                'aine' => $row['aine']));
         }
+
         return $ainesosat;
     }
 
@@ -42,6 +42,7 @@ class Ainesosa extends BaseModel {
                                         'aine' => $row['aine']));
             return $ainesosa;
         }
+
         return null;
     }
 
@@ -77,16 +78,15 @@ class Ainesosa extends BaseModel {
                             'id' => $this->id));
     }
 
-//VALIDOINTIMETODIT
 
+//VALIDOINTIMETODIT
     public function validoi_pituus() {
-        return parent::validoi_merkkijonon_pituus($this->aine, 5, 30, 'Ainesosan nimen');  
+        return parent::validoi_merkkijonon_pituus($this->aine, 5, 30, 'Ainesosan nimen');
     }
 
     public function validoi_numerot() {
-        return parent::validoi_merkkijonon_numeerisuus($this->aine, 'Ainesosan nimessä');  
+        return parent::validoi_merkkijonon_numeerisuus($this->aine, 'Ainesosan nimessä'); 
     }
-
 
 
 }

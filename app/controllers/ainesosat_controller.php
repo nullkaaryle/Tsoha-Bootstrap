@@ -23,16 +23,17 @@ class AinesosatController extends BaseController{
     public static function tallenna_ainesosa(){
         $params = $_POST;
         $ainesosa = new Ainesosa(array(
-            'aine' => $params['aine']
-        )); 
-
+            'aine' => $params['aine'])); 
+        
         $errors = $ainesosa->errors();
 
         if (count($errors) == 0) {
             $ainesosa -> tallenna();
             Redirect::to('/ainesosat/' . $ainesosa->id, array('message' => 'Uusi ainesosa tallennettu!'));
+       
         } else {
-            View::make('ainesosa/ainesosanlisays.html', array('errors' => $errors, 'ainesosa' => $ainesosa));
+            View::make('ainesosa/ainesosanlisays.html', array('errors' => $errors, 
+                                                            'ainesosa' => $ainesosa));
         }
     }
 
@@ -49,14 +50,14 @@ class AinesosatController extends BaseController{
         
         $attributes = array(
             'id' => $id,
-            'aine' => $aine,
-        );
+            'aine' => $aine,);
 
         $ainesosa = new Ainesosa($attributes);
         $errors = $ainesosa->errors();
 
         if (count($errors) > 0) {
             View::make('ainesosa/ainesosanmuokkaus.html', array('errors' => $errors, 'ainesosa' => $ainesosa));
+        
         } else {
             $ainesosa->paivita();
             Redirect::to('/ainesosat/' . $ainesosa->id, array('message' => 'Ainesosaa on muokattu onnistuneesti!'));

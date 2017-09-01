@@ -15,16 +15,16 @@ class Laakari extends BaseModel {
                                             ORDER BY sukunimi');
         $query->execute();
         $rows = $query->fetchAll();
-        $ainesosat = array();
+        $laakarit = array();
 
         foreach($rows as $row) {
             $laakarit[] = new Laakari(array(
                 'id' => $row['id'],
                 'etunimi' => $row['etunimi'],
                 'sukunimi' => $row['sukunimi'],
-                'tunnus' => $row['tunnus']
-            ));
+                'tunnus' => $row['tunnus']));
         }
+
         return $laakarit;
     }
 

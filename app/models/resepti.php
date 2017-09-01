@@ -27,7 +27,6 @@ class Resepti extends BaseModel {
                                             INNER JOIN Laake le ON r.laake = le.id
                                             ORDER BY    r.paivamaara DESC, 
                                                         r.id DESC');
-
         $query->execute();
         $rows = $query->fetchAll();
         $reseptit = array();
@@ -40,8 +39,7 @@ class Resepti extends BaseModel {
                 'laakari'   =>  $row['laakari_sukunimi'] . ', ' . $row['laakari_etunimi'],
                 'laake'     =>  $row['laake'],
                 'ohje'      =>  $row['ohje'],
-                'paivamaara' => $row['paivamaara']
-            ));
+                'paivamaara' => $row['paivamaara']));
         }
 
         return $reseptit;
@@ -78,9 +76,7 @@ class Resepti extends BaseModel {
                 'laakari'   =>  $row['laakari_sukunimi'] . ' ' . $row['laakari_etunimi'] . ' - tunnus: ' . $row['laakari_tunnus'],
                 'laake'     =>  $row['laake_tuotenimi'] . ' - ' . $row['laake_pakkaus'],
                 'ohje'      =>  $row['ohje'],
-                'paivamaara' => $row['paivamaara']
-            ));
-
+                'paivamaara' => $row['paivamaara']));
             return $resepti;
         }
 
@@ -113,9 +109,7 @@ class Resepti extends BaseModel {
                 'laakari'   =>  $row['laakari'],
                 'laake'     =>  $row['laake'],
                 'ohje'      =>  $row['ohje'],
-                'paivamaara' => $row['paivamaara']
-            ));
-
+                'paivamaara' => $row['paivamaara']));
             return $resepti;
         }
 
@@ -146,11 +140,8 @@ class Resepti extends BaseModel {
                             'laakari'   => $this->laakari,
                             'laake'     => $this->laake,
                             'ohje'      => $this->ohje,
-                            'paivamaara'=> $paivamaara
-                            ));
-        
+                            'paivamaara'=> $paivamaara));
         $row = $query->fetch();
-
         $this->id = $row['id'];
     }
 
@@ -168,9 +159,7 @@ class Resepti extends BaseModel {
                             'potilas'   => $this->potilas,
                             'laakari'   => $this->laakari,
                             'laake'     => $this->laake,
-                            'ohje'      => $this->ohje
-                            ));
-
+                            'ohje'      => $this->ohje));
         $row = $query->fetch();
         $this->id = $row['id'];
     }

@@ -17,19 +17,21 @@ class ApteekitController extends BaseController{
         $testi_apteekki = new Apteekki(array(
             'nimi' => $nimi,
             'kayttajatunnus' => $kayttajatunnus,
-            'salasana' => $salasana
-        ));
+            'salasana' => $salasana));
 
         $errors = $testi_apteekki->errors();
 
         if (count($errors) > 0) {
-            View::make('kirjautuminen.html', array('errors' => $errors, 'kayttajatunnus' => $params['kayttajatunnus']));
+            View::make('kirjautuminen.html', array('errors' => $errors, 
+                                            'kayttajatunnus' => $params['kayttajatunnus']));
         }
 
         $apteekki = Apteekki::authenticate($kayttajatunnus, $salasana);
 
         if (!$apteekki) {
-            View::make('kirjautuminen.html', array('message' => 'Väärä käyttäjätunnus tai salasana!', 'kayttajatunnus' => $params['kayttajatunnus']));
+            View::make('kirjautuminen.html', array('message' => 'Väärä käyttäjätunnus tai salasana!', 
+                                            'kayttajatunnus' => $params['kayttajatunnus']));
+        
         } else {
             $_SESSION['apteekki'] = $apteekki->id;
             Redirect::to('/reseptit', array('message' => 'Tervetuloa ' . $apteekki->nimi . '!'));

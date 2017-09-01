@@ -19,7 +19,6 @@ class Apteekki extends BaseModel {
         $query->execute(array(
                             'kayttajatunnus' => $kayttajatunnus,
                             'salasana'       => $salasana));
-        
         $row = $query->fetch();
 
         if ($row) {
@@ -27,8 +26,7 @@ class Apteekki extends BaseModel {
                                         'id' => $row['id'],
                                         'nimi' => $row['nimi'],
                                         'kayttajatunnus' => $row['kayttajatunnus'],
-                                        'salasana' => $row['salasana']
-                                        ));
+                                        'salasana' => $row['salasana']));
             return $apteekki;
       
         } else {
@@ -51,8 +49,7 @@ class Apteekki extends BaseModel {
                                         'id' => $row['id'],
                                         'nimi' => $row['nimi'],
                                         'kayttajatunnus' => $row['kayttajatunnus'],
-                                        'salasana' => $row['salasana']
-                                        ));
+                                        'salasana' => $row['salasana']));
             return $apteekki;
         }
 
@@ -61,17 +58,14 @@ class Apteekki extends BaseModel {
 
 
 //VALIDOINTIMETODIT
-
     public function validoi_kayttajatunnus() {
         return parent::validoi_merkkijonon_pituus($this->kayttajatunnus, 3, 30, 'Käyttäjätunnuksen');
     }
 
     public function validoi_salasana() {
         return parent::validoi_merkkijonon_pituus($this->salasana, 3, 30, 'Salasanan'); 
-
     }
 
-    
 
 
 }

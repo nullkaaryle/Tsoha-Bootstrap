@@ -24,11 +24,11 @@
 
     <tbody>
       {% for laake in laakkeet %}
-        <tr>
-          <td>{{laake.id}}</td>
-          <td>{{buttons.info_button("#{base_path}/laakkeet/#{laake.id}", "#{laake.tuotenimi}")}}</td>
-          <td>{{laake.pakkaus}}</td>
-        </tr>
+      <tr>
+        <td>{{laake.id}}</td>
+        <td>{{buttons.info_button("#{base_path}/laakkeet/#{laake.id}", "#{laake.tuotenimi}")}}</td>
+        <td>{{laake.pakkaus}}</td>
+      </tr>
       {% endfor %}
     </tbody>
 

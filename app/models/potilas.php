@@ -15,16 +15,16 @@ class Potilas extends BaseModel {
                                             ORDER BY sukunimi');
         $query->execute();
         $rows = $query->fetchAll();
-        $ainesosat = array();
+        $potilaat = array();
 
         foreach($rows as $row) {
             $potilaat[] = new Potilas(array(
                 'id' => $row['id'],
                 'etunimi' => $row['etunimi'],
                 'sukunimi' => $row['sukunimi'],
-                'syntymaaika' => $row['syntymaaika']
-            ));
+                'syntymaaika' => $row['syntymaaika']));
         }
+
         return $potilaat;
     }
 

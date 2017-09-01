@@ -28,6 +28,7 @@
     }
 
     
+//VALIDOINTIMETODIT  
     public function validoi_merkkijonon_pituus($merkkijono, $min_pituus, $max_pituus, $kohde){
       $virheet = array();
 

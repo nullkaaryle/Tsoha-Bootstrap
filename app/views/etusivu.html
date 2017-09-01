@@ -4,8 +4,7 @@
 <!-- Viestit -->  
   {% if message %}
     <div 
-      class="alert alert-success">
-      {{message}}
+      class="alert alert-success">{{message}}
     </div>
   {% endif %} 
 
@@ -19,8 +18,9 @@
   
 <!-- Vierailijalle kehotus kirjautua sisään-->  
   {% else %}
-        <h3>Tervetuloa vieras!</h3>
-        <a href="{{base_path}}/kirjautuminen" class="btn btn-primary">Jatka kirjautumiseen</a>      
+    <h3>Tervetuloa vieras!</h3>
+    <a href="{{base_path}}/kirjautuminen" class="btn btn-primary">Jatka kirjautumiseen</a>      
   {% endif %}
+
 
 {% endblock %}

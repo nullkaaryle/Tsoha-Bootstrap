@@ -10,25 +10,27 @@ class Laakkeenosa extends BaseModel {
 
 
     public static function hae_kaikki() {
-        $query = DB::connection()->prepare('SELECT * FROM Laakkeenosa');
+        $query = DB::connection()->prepare('SELECT * 
+                                            FROM Laakkeenosa');
         $query->execute();
         $rows = $query->fetchAll();
-        $ainesosat = array();
+        $laakkeenosat = array();
 
         foreach($rows as $row) {
             $laakkeenosat[] = new Laakkeenosa(array(
                 'id' => $row['id'],
                 'laake' => $row['laake'],
                 'ainesosa' => $row['ainesosa'],
-                'vahvuus' => $row['vahvuus']
-            ));
+                'vahvuus' => $row['vahvuus']));
         }
+
         return $laakkeenosat;
     }
 
 
     public static function hae($id) {
-        $query = DB::connection()->prepare('SELECT * FROM Laakkeenosa 
+        $query = DB::connection()->prepare('SELECT * 
+                                            FROM Laakkeenosa 
                                             WHERE id = :id 
                                             LIMIT 1');
         $query->execute(array(
@@ -40,9 +42,7 @@ class Laakkeenosa extends BaseModel {
                                         'id' => $row['id'],
                                         'laake' => $row['laake'],
                                         'ainesosa' => $row['ainesosa'],
-                                        'vahvuus' => $row['vahvuus']
-                                        ));
-
+                                        'vahvuus' => $row['vahvuus']));
             return $laakkeenosa;
         }
 
@@ -51,7 +51,6 @@ class Laakkeenosa extends BaseModel {
 
 
     public static function hae_laakkeen_idlla($laake_id) {
-
         $query = DB::connection()->prepare('SELECT  lo.id,
                                                     lo.laake,
                                                     ao.aine AS ainesosa_aine,
@@ -59,10 +58,8 @@ class Laakkeenosa extends BaseModel {
                                             FROM Laakkeenosa lo
                                             INNER JOIN Ainesosa ao ON lo.ainesosa = ao.id
                                             WHERE lo.laake = :laake_id');
-        
         $query->execute(array(
                             'laake_id' => $laake_id));
-        
         $rows = $query->fetchAll();
         $laakkeenosat = array();
 
@@ -71,9 +68,9 @@ class Laakkeenosa extends BaseModel {
                 'id'            => $row['id'],
                 'laake'         => $row['laake'],
                 'ainesosa'      => $row['ainesosa_aine'],
-                'vahvuus'       => $row['vahvuus']
-            ));
+                'vahvuus'       => $row['vahvuus']));
         }
+
         return $laakkeenosat;
     }
 
@@ -82,7 +79,6 @@ class Laakkeenosa extends BaseModel {
         $query = DB::connection()->prepare('SELECT * 
                                             FROM Laakkeenosa 
                                             WHERE ainesosa = :ainesosa_id');
-        
         $query->execute(array(
                             'ainesosa_id' => $ainesosa_id));
         $rows = $query->fetchAll();
@@ -93,9 +89,9 @@ class Laakkeenosa extends BaseModel {
                 'id' => $row['id'],
                 'laake' => $row['laake'],
                 'ainesosa' => $row['ainesosa'],
-                'vahvuus' => $row['vahvuus']
-            ));
+                'vahvuus' => $row['vahvuus']));
         }
+
         return $laakkeenosat;
     }
 

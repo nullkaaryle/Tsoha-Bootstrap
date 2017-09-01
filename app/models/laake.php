@@ -9,18 +9,18 @@ class Laake extends BaseModel {
     }
 
     public static function hae_kaikki() {
-        $query = DB::connection()->prepare('SELECT * FROM Laake');
+        $query = DB::connection()->prepare('SELECT * 
+                                            FROM Laake');
         $query->execute();
         $rows = $query->fetchAll();
-        $ainesosat = array();
+        $laakkeet = array();
 
         foreach($rows as $row) {
             $laakkeet[] = new Laake(array(
                 'id' => $row['id'],
                 'tuotenimi' => $row['tuotenimi'],
                 'pakkaus' => $row['pakkaus'],
-                'kayttoaihe' => $row['kayttoaihe']
-            ));
+                'kayttoaihe' => $row['kayttoaihe']));
         }
 
         return $laakkeet;
@@ -40,7 +40,6 @@ class Laake extends BaseModel {
                                             INNER JOIN Laakkeenosa lo ON la.id = lo.laake
                                             INNER JOIN Ainesosa ao ON lo.ainesosa = ao.id 
                                             WHERE la.id = :id');
-
         $query->execute(array('id' => $id));
         $row = $query->fetch();
 
@@ -51,9 +50,7 @@ class Laake extends BaseModel {
                 'pakkaus'   => $row['pakkaus'],
                 'kayttoaihe' => $row['kayttoaihe'],
                 'ainesosa' => $row['ainesosa'],
-                'vahvuus' => $row['vahvuus']
-            ));
-
+                'vahvuus' => $row['vahvuus']));
             return $laake;
         }
 
@@ -62,7 +59,6 @@ class Laake extends BaseModel {
 
 
     public static function hae_laakkeenosat($id) {
-       
         $query = DB::connection()->prepare('SELECT  la.id,
                                                     ao.aine AS ainesosa,
                                                     lo.vahvuus AS vahvuus
@@ -70,7 +66,6 @@ class Laake extends BaseModel {
                                             INNER JOIN Laakkeenosa lo ON la.id = lo.laake
                                             INNER JOIN Ainesosa ao ON lo.ainesosa = ao.id 
                                             WHERE la.id = :id');
-
         $query->execute(array('id' => $id));
         $row = $query->fetch();
 
@@ -78,9 +73,7 @@ class Laake extends BaseModel {
             $laake = new Laake(array(
                 'id'        => $row['id'],
                 'ainesosa' => $row['ainesosa'],
-                'vahvuus' => $row['vahvuus']
-            ));
-
+                'vahvuus' => $row['vahvuus']));
             return $laake;
         }
 

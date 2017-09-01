@@ -7,6 +7,7 @@ class ReseptitController extends BaseController{
         View::make('resepti/reseptilistaus.html', array('reseptit' => $reseptit));
     }
 
+
     public static function nayta_resepti($id){
         $resepti = Resepti::hae($id);
         View::make('resepti/resepti.html', array('resepti' => $resepti));
@@ -17,7 +18,9 @@ class ReseptitController extends BaseController{
         $potilaat = Potilas::hae_kaikki();
         $laakarit = Laakari::hae_kaikki();
         $laakkeet = Laake::hae_kaikki();
-        View::make('resepti/reseptinlisays.html', array('potilaat' => $potilaat, 'laakarit' => $laakarit, 'laakkeet' => $laakkeet));
+        View::make('resepti/reseptinlisays.html', array('potilaat' => $potilaat, 
+                                                        'laakarit' => $laakarit, 
+                                                        'laakkeet' => $laakkeet));
     }
 
 
@@ -35,8 +38,7 @@ class ReseptitController extends BaseController{
             'potilas' => $potilas,
             'laakari' => $laakari,
             'laake' => $laake,
-            'ohje' => $ohje
-        )); 
+            'ohje' => $ohje)); 
 
         $potilaat = Potilas::hae_kaikki();
         $laakarit = Laakari::hae_kaikki();
@@ -49,7 +51,11 @@ class ReseptitController extends BaseController{
             Redirect::to('/reseptit/' . $resepti->id, array('message' => 'Uusi resepti tallennettu!'));
         
         } else {
-            View::make('resepti/reseptinlisays.html', array('errors' => $errors, 'resepti' => $resepti, 'potilaat' => $potilaat, 'laakarit' => $laakarit, 'laakkeet' => $laakkeet));
+            View::make('resepti/reseptinlisays.html', array('errors' => $errors, 
+                                                           'resepti' => $resepti, 
+                                                          'potilaat' => $potilaat, 
+                                                          'laakarit' => $laakarit, 
+                                                          'laakkeet' => $laakkeet));
         }
         
     }
@@ -61,7 +67,11 @@ class ReseptitController extends BaseController{
         $potilaat = Potilas::hae_kaikki();
         $laakarit = Laakari::hae_kaikki();
         $laakkeet = Laake::hae_kaikki();
-        View::make('resepti/reseptinmuokkaus.html', array('resepti_idt' => $resepti_idt, 'resepti' => $resepti, 'potilaat' => $potilaat, 'laakarit' => $laakarit, 'laakkeet' => $laakkeet));
+        View::make('resepti/reseptinmuokkaus.html', array('resepti_idt' => $resepti_idt, 
+                                                              'resepti' => $resepti, 
+                                                             'potilaat' => $potilaat, 
+                                                             'laakarit' => $laakarit, 
+                                                             'laakkeet' => $laakkeet));
     }
 
 
@@ -79,11 +89,11 @@ class ReseptitController extends BaseController{
         );
 
         $resepti = new Resepti($attributes);
-        
         $errors = $resepti->errors();
 
         if (count($errors) > 0) {
-            View::make('resepti/reseptinmuokkaus.html', array('errors' => $errors, 'attributes' => $attributes));
+            View::make('resepti/reseptinmuokkaus.html', array('errors' => $errors, 
+                                                          'attributes' => $attributes));
         
         } else {
             $resepti->paivita();

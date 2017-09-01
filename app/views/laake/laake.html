@@ -28,21 +28,23 @@
 <!-- Listaus lääkeen ainesosista ja vahvuuksista -->
       <tr>
         <th>Lääkkeen sisältämät ainesosat</th>
-        <td> <table class="table">
+        <td> 
+          <table class="table">
+          
+            <tr>  
+              <th>Ainesosa</th>
+              <th>Määrä</th>
+            </tr>
+          
+            {% for laakkeenosa in laakkeenosat %}
+            <tr>  
+              <td>{{laakkeenosa.ainesosa}}</td> 
+              <td>{{laakkeenosa.vahvuus}}</td> 
+            </tr>
+            {% endfor %}
 
-          <tr>  
-            <th>Ainesosa</th>
-            <th>Määrä</th>
-          </tr>
-        
-        {% for laakkeenosa in laakkeenosat %}
-          <tr>  
-            <td>{{laakkeenosa.ainesosa}}</td> 
-            <td>{{laakkeenosa.vahvuus}}</td> 
-          </tr>
-        {% endfor %}
-
-        </table></td>
+          </table>
+        </td>
       </tr>
 
 <!-- Lääkkeen käyttöaihe -->  
