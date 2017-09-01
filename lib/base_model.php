@@ -27,23 +27,6 @@
       return $errors;
     }
 
-
-//YLEISET VALIDOINTIMETODIT
-/*    
-    public function validate_string_length($string, $min_length, $max_length) {
-      $errors = array();
-
-      if(strlen($string) < $min_length) {
-            $errors[] = 'Tallennettavan syötteen on oltava vähintään ' . $min_length . ' merkkiä pitkä';
-      }
-
-      if(strlen($string) > $max_length) {
-            $errors[] = 'Tallennettavan syötteen on oltava enintään ' . $max_length . ' merkkiä pitkä';
-      }
-
-      return $errors;
-    }
-*/
     
     public function validoi_merkkijonon_pituus($merkkijono, $min_pituus, $max_pituus, $kohde){
       $virheet = array();
@@ -60,14 +43,14 @@
     }
 
 
-    public function validate_string_numerics($string){
-      $errors = array();
+    public function validoi_merkkijonon_numeerisuus($merkkijono, $kohde){
+      $virheet = array();
 
-      if(is_int($string)) {
-            $errors[] = 'Tallennettava syöte ei voi olla pelkkiä numeroita!';       
+      if (ctype_digit($merkkijono)) {
+            $virheet[] = $kohde . ' ei voi olla pelkkiä numeroita!';       
       }
 
-      return $errors;
+      return $virheet;
     }
 
 

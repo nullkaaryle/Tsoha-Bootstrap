@@ -80,12 +80,11 @@ class Ainesosa extends BaseModel {
 //VALIDOINTIMETODIT
 
     public function validoi_pituus() {
-        return parent::validoi_merkkijonon_pituus($this->aine, 5, 30, 'Ainesosan');  
+        return parent::validoi_merkkijonon_pituus($this->aine, 5, 30, 'Ainesosan nimen');  
     }
 
-
     public function validoi_numerot() {
-        return parent::validate_string_numerics($this->aine);  
+        return parent::validoi_merkkijonon_numeerisuus($this->aine, 'Ainesosan nimessä');  
     }
 
 
