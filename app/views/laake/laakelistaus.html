@@ -6,17 +6,18 @@
     <a href="{{base_path}}/reseptit" button type="button" class="btn btn-primary btn-xs">Palaa reseptilistaukseen</button></a>
   </p>
 
-<!-- Otsikko -->   
+<!-- Otsikko ja ohje -->   
   <h1>Lääkelistaus</h1>
+  <p>Tarkastele lääkettä napauttamalla tuotenimeä.</p>
  
 <!-- Listaus eri lääkkeistä--> 
   <table class="table table-striped table-bordered">
     
     <thead>
       <tr>
-        <th>Rekisteröintinumero</th>
+        <th>Myyntilupanumero</th>
         <th>Tuotenimi</th>
-        <th>Pakkauskoko ja lääkemuoto</th>
+        <th>Pakkauskoko</th>
       </tr>
     </thead>
 
@@ -24,7 +25,7 @@
       {% for laake in laakkeet %}
         <tr>
           <td>{{laake.id}}</td>
-          <td><a href="{{base_path}}/laakkeet/{{laake.id}}">{{laake.tuotenimi}}</td>
+          <td><a href="{{base_path}}/laakkeet/{{laake.id}}" button type="button" class="btn btn-info">{{laake.tuotenimi}}</button></a></td>
           <td>{{laake.pakkaus}}</td>
         </tr>
       {% endfor %}

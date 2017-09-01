@@ -26,13 +26,13 @@
   
 <!-- Otsikko --> 
   <h1>Ainesosalistaus</h1>
-
+  <p>Ainesosaa voi tarkastella napauttamalla nimeä.</p>
 <!-- Listaus --> 
   <table class="table table-striped table-bordered">
     
     <thead>
       <tr>
-        <th>Tunnistenumero</th>
+        <th>Eurooppalainen tunnistenumero</th>
         <th>Ainesosa</th>
       </tr>
     </thead>
@@ -41,7 +41,7 @@
       {% for ainesosa in ainesosat %}
         <tr>
           <td>{{ainesosa.id}}</td>
-          <td><a href="{{base_path}}/ainesosat/{{ainesosa.id}}">{{ainesosa.aine}}</a></td>
+          <td><a href="{{base_path}}/ainesosat/{{ainesosa.id}}" button type="button" class="btn btn-info">{{ainesosa.aine}}</button></a></td>
         <tr>  
       {% endfor %}
     </tbody>

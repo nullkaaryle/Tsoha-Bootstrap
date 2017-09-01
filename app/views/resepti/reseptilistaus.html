@@ -3,6 +3,7 @@
   
  <!-- Otsikko --> 
   <h1>Reseptilistaus</h1>
+  <p>Tarkastele reseptiä napauttamalla reseptin numeroa.</p>
 
 <!-- Viestit --> 
   {% if message %}
@@ -29,7 +30,7 @@
     <tbody>
       {% for resepti in reseptit %}
         <tr>
-          <td><a href="{{base_path}}/reseptit/{{resepti.id}}">{{resepti.id}}</td>
+          <td><a href="{{base_path}}/reseptit/{{resepti.id}}" button type="button" class="btn btn-info">{{resepti.id}}</button></a></td>
           <td>{{resepti.apteekki}}</td>
           <td>{{resepti.potilas}}</td>
           <td>{{resepti.laakari}}</td>
